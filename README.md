@@ -12,25 +12,6 @@ EcoCycle aims to solve these problems by providing:
 - Incentives for household level recycling
 - Feedback mechanisms for informed decision making by stakeholders
 
-## Project Structure
-
-```
-ecocycle/
-├── backend/               # Node.js/Express backend
-│   ├── config/            # Configuration files
-│   ├── controllers/       # API controllers
-│   ├── models/            # MongoDB models
-│   ├── routes/            # API routes
-│   ├── middleware/        # Custom middleware
-│   └── utils/             # Utility functions
-├── frontend/
-│   ├── web/               # React.js web application
-│   ├── mobile/            # React Native mobile application
-│   └── admin/             # React.js admin dashboard
-├── docs/                  # Documentation
-└── design/                # Design assets and wireframes
-```
-
 ## Features
 
 ### Core Features (MVP)
@@ -87,7 +68,7 @@ ecocycle/
 
 1. Clone the repository
 ```bash
-git clone https://github.com/yourusername/ecocycle.git
+git clone https://github.com/uniquesamjohn/ecocycle.git
 cd ecocycle
 ```
 
