@@ -1,0 +1,154 @@
+/* Screen 2 Specific Styles */
+
+.screen-2 {
+    animation: slideInRight 0.5s ease-out;
+}
+
+.screen-2 .illustration-container {
+    background: linear-gradient(135deg, rgba(52, 152, 219, 0.1) 0%, rgba(52, 152, 219, 0.05) 100%);
+    border-radius: 20px;
+    padding: 20px;
+    position: relative;
+    overflow: hidden;
+}
+
+.screen-2 .illustration-container::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(45deg, transparent 30%, rgba(39, 174, 96, 0.1) 50%, transparent 70%);
+    animation: shimmer 3s ease-in-out infinite;
+}
+
+@keyframes shimmer {
+    0% { transform: translateX(-100%) translateY(-100%) rotate(45deg); }
+    50% { transform: translateX(0%) translateY(0%) rotate(45deg); }
+    100% { transform: translateX(100%) translateY(100%) rotate(45deg); }
+}
+
+.screen-2 .illustration {
+    filter: drop-shadow(0 6px 12px rgba(0, 0, 0, 0.15));
+    transition: all 0.3s ease;
+    position: relative;
+    z-index: 2;
+}
+
+.screen-2 .illustration:hover {
+    transform: scale(1.03) rotate(1deg);
+}
+
+.screen-2 .title {
+    color: #2c3e50;
+    text-align: center;
+    position: relative;
+}
+
+.screen-2 .title::after {
+    content: '';
+    position: absolute;
+    bottom: -8px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 3px;
+    background: linear-gradient(90deg, #27ae60, #2ecc71);
+    border-radius: 2px;
+}
+
+.screen-2 .description {
+    max-width: 300px;
+    margin: 0 auto 30px;
+    text-align: center;
+    line-height: 1.7;
+}
+
+/* Problem → Solution specific animations */
+@keyframes problemSolutionSlide {
+    from {
+        opacity: 0;
+        transform: translateX(50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+.screen-2 .content {
+    animation: problemSolutionSlide 0.8s ease-out 0.3s both;
+}
+
+.screen-2 .navigation {
+    animation: problemSolutionSlide 0.8s ease-out 0.6s both;
+}
+
+/* Arrow animation in title */
+.screen-2 .title {
+    position: relative;
+}
+
+.screen-2 .title::before {
+    content: '→';
+    display: inline-block;
+    margin: 0 8px;
+    color: #27ae60;
+    animation: arrowPulse 2s ease-in-out infinite;
+}
+
+@keyframes arrowPulse {
+    0%, 100% { 
+        transform: scale(1);
+        opacity: 1;
+    }
+    50% { 
+        transform: scale(1.2);
+        opacity: 0.7;
+    }
+}
+
+/* Responsive adjustments for screen 2 */
+@media (max-width: 375px) {
+    .screen-2 .illustration-container {
+        margin: 10px 0 30px;
+        padding: 15px;
+    }
+    
+    .screen-2 .title {
+        font-size: 24px;
+        margin-bottom: 20px;
+    }
+    
+    .screen-2 .description {
+        font-size: 15px;
+        max-width: 280px;
+        line-height: 1.6;
+    }
+}
+
+@media (min-width: 768px) {
+    .screen-2 .illustration-container {
+        margin: 30px 0 50px;
+    }
+    
+    .screen-2 .title {
+        font-size: 32px;
+    }
+    
+    .screen-2 .description {
+        font-size: 18px;
+        max-width: 350px;
+    }
+}
+
+/* Interactive elements */
+.screen-2 .illustration-container:hover::before {
+    animation-duration: 1.5s;
+}
+
+.screen-2 .content:hover .title::after {
+    width: 80px;
+    transition: width 0.3s ease;
+}

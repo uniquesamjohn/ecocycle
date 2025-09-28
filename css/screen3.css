@@ -1,0 +1,270 @@
+/* Screen 3 Specific Styles */
+
+.screen-3 {
+    animation: slideInRight 0.5s ease-out;
+}
+
+.screen-3 .illustration-container {
+    background: linear-gradient(135deg, rgba(46, 204, 113, 0.15) 0%, rgba(39, 174, 96, 0.1) 50%, rgba(26, 188, 156, 0.05) 100%);
+    border-radius: 25px;
+    padding: 25px;
+    position: relative;
+    overflow: hidden;
+}
+
+.screen-3 .illustration-container::before {
+    content: '';
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    width: 20px;
+    height: 20px;
+    background: radial-gradient(circle, rgba(255, 223, 0, 0.8) 0%, rgba(255, 223, 0, 0.3) 70%, transparent 100%);
+    border-radius: 50%;
+    animation: sunGlow 4s ease-in-out infinite;
+}
+
+.screen-3 .illustration-container::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 30px;
+    background: linear-gradient(to top, rgba(39, 174, 96, 0.1), transparent);
+    border-radius: 0 0 25px 25px;
+}
+
+@keyframes sunGlow {
+    0%, 100% { 
+        opacity: 0.6;
+        transform: scale(1);
+    }
+    50% { 
+        opacity: 1;
+        transform: scale(1.2);
+    }
+}
+
+.screen-3 .illustration {
+    filter: drop-shadow(0 8px 16px rgba(0, 0, 0, 0.1));
+    transition: all 0.4s ease;
+    position: relative;
+    z-index: 2;
+}
+
+.screen-3 .illustration:hover {
+    transform: scale(1.05);
+    filter: drop-shadow(0 12px 24px rgba(39, 174, 96, 0.2));
+}
+
+.screen-3 .title {
+    color: #27ae60;
+    text-align: center;
+    position: relative;
+    background: linear-gradient(135deg, #27ae60 0%, #2ecc71 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.screen-3 .title::after {
+    content: '🌱';
+    position: absolute;
+    top: -5px;
+    right: -30px;
+    font-size: 20px;
+    animation: leafFloat 3s ease-in-out infinite;
+}
+
+@keyframes leafFloat {
+    0%, 100% { 
+        transform: translateY(0) rotate(0deg);
+    }
+    50% { 
+        transform: translateY(-5px) rotate(5deg);
+    }
+}
+
+.screen-3 .description {
+    max-width: 320px;
+    margin: 0 auto 40px;
+    text-align: center;
+    line-height: 1.8;
+    color: #34495e;
+}
+
+/* Benefits screen specific animations */
+@keyframes benefitsSlideUp {
+    from {
+        opacity: 0;
+        transform: translateY(40px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.screen-3 .content {
+    animation: benefitsSlideUp 0.8s ease-out 0.3s both;
+}
+
+.screen-3 .action-buttons {
+    animation: benefitsSlideUp 0.8s ease-out 0.6s both;
+}
+
+/* Enhanced button styles for screen 3 */
+.screen-3 .btn {
+    position: relative;
+    overflow: hidden;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+}
+
+.screen-3 .btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: left 0.5s ease;
+}
+
+.screen-3 .btn:hover::before {
+    left: 100%;
+}
+
+.screen-3 .btn-primary {
+    background: linear-gradient(135deg, #27ae60 0%, #2ecc71 100%);
+    border: none;
+    position: relative;
+}
+
+.screen-3 .btn-primary:hover {
+    background: linear-gradient(135deg, #219a52 0%, #27ae60 100%);
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(39, 174, 96, 0.4);
+}
+
+.screen-3 .btn-primary:active {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 10px rgba(39, 174, 96, 0.3);
+}
+
+.screen-3 .btn-secondary {
+    background: transparent;
+    border: 2px solid #27ae60;
+    color: #27ae60;
+    position: relative;
+}
+
+.screen-3 .btn-secondary::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0;
+    height: 100%;
+    background: #27ae60;
+    transition: width 0.3s ease;
+    z-index: -1;
+}
+
+.screen-3 .btn-secondary:hover::after {
+    width: 100%;
+}
+
+.screen-3 .btn-secondary:hover {
+    color: white;
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(39, 174, 96, 0.3);
+}
+
+/* Responsive adjustments for screen 3 */
+@media (max-width: 375px) {
+    .screen-3 .illustration-container {
+        margin: 10px 0 25px;
+        padding: 20px;
+    }
+    
+    .screen-3 .title {
+        font-size: 26px;
+        margin-bottom: 20px;
+    }
+    
+    .screen-3 .description {
+        font-size: 15px;
+        max-width: 300px;
+        margin-bottom: 35px;
+    }
+    
+    .screen-3 .action-buttons {
+        gap: 12px;
+        margin-top: 30px;
+    }
+    
+    .screen-3 .btn {
+        padding: 14px 20px;
+        font-size: 15px;
+    }
+}
+
+@media (min-width: 768px) {
+    .screen-3 .illustration-container {
+        margin: 30px 0 50px;
+        padding: 30px;
+    }
+    
+    .screen-3 .title {
+        font-size: 34px;
+    }
+    
+    .screen-3 .description {
+        font-size: 18px;
+        max-width: 380px;
+    }
+    
+    .screen-3 .btn {
+        padding: 18px 28px;
+        font-size: 17px;
+    }
+}
+
+/* Success state animations */
+@keyframes successPulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+    100% { transform: scale(1); }
+}
+
+.screen-3 .btn.success {
+    animation: successPulse 0.6s ease-in-out;
+}
+
+/* Loading state for buttons */
+.screen-3 .btn.loading {
+    pointer-events: none;
+    opacity: 0.7;
+}
+
+.screen-3 .btn.loading::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 20px;
+    height: 20px;
+    margin: -10px 0 0 -10px;
+    border: 2px solid transparent;
+    border-top: 2px solid currentColor;
+    border-radius: 50%;
+    animation: buttonSpin 1s linear infinite;
+}
+
+@keyframes buttonSpin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}

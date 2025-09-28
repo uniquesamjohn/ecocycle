@@ -1,0 +1,87 @@
+/* Screen 1 Specific Styles */
+
+.screen-1 {
+    animation: fadeIn 0.5s ease-in-out;
+}
+
+.screen-1 .illustration-container {
+    background: linear-gradient(135deg, rgba(39, 174, 96, 0.1) 0%, rgba(39, 174, 96, 0.05) 100%);
+    border-radius: 20px;
+    padding: 20px;
+}
+
+.screen-1 .illustration {
+    filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.1));
+    transition: transform 0.3s ease;
+}
+
+.screen-1 .illustration:hover {
+    transform: scale(1.02);
+}
+
+.screen-1 .title {
+    background: linear-gradient(135deg, #27ae60 0%, #2ecc71 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-align: center;
+}
+
+.screen-1 .description {
+    max-width: 280px;
+    margin: 0 auto 30px;
+    text-align: center;
+}
+
+/* Welcome screen specific animations */
+@keyframes welcomeSlideUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.screen-1 .content {
+    animation: welcomeSlideUp 0.8s ease-out 0.3s both;
+}
+
+.screen-1 .navigation {
+    animation: welcomeSlideUp 0.8s ease-out 0.6s both;
+}
+
+/* Responsive adjustments for screen 1 */
+@media (max-width: 375px) {
+    .screen-1 .illustration-container {
+        margin: 10px 0 30px;
+        padding: 15px;
+    }
+    
+    .screen-1 .title {
+        font-size: 24px;
+        margin-bottom: 15px;
+    }
+    
+    .screen-1 .description {
+        font-size: 15px;
+        max-width: 260px;
+    }
+}
+
+@media (min-width: 768px) {
+    .screen-1 .illustration-container {
+        margin: 30px 0 50px;
+    }
+    
+    .screen-1 .title {
+        font-size: 32px;
+    }
+    
+    .screen-1 .description {
+        font-size: 18px;
+        max-width: 320px;
+    }
+}
