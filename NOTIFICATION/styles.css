@@ -12,7 +12,7 @@ body {
     Ubuntu, Cantarell, sans-serif;
   background: linear-gradient(135deg, var(--background-color) 0%, #c3cfe2 100%);
   min-height: 100vh;
-  overflow: hidden;
+  overflow-x: hidden;
 }
 .body-container {
   margin: 0 auto;
@@ -25,14 +25,12 @@ body {
 .status-bar{
     justify-content: center;
     align-items: center;
-    
 }
 .status-bar-img{
-  
 margin-left: -30px;
 width: 400px;
+object-fit: contain;
 
- 
 }
 .header{
    display: flex;
@@ -44,4 +42,32 @@ width: 400px;
     text-align: center;
     font-weight:bold;
     font-size: 24px;
+    margin-bottom: 20px;
+}
+.main{
+    margin-top: 100px;
+    position: absolute;
+    
+}
+.notification-img{
+    object-fit: cover;
+    margin: 0 auto;
+     position: absolute;
+     left: 30px;
+     top: 30px;
+}
+.notification-bg-img{
+    object-fit: cover;
+    margin: 0 auto;
+    position: absolute;
+    left: 40px;
+    top: -10px;
+    opacity: 0.5;
+
+}
+.notification-subtitle{
+    text-align: center;
+    font-size: 18px;
+    margin-top: 430px;
+    font-weight: 500;
 }
