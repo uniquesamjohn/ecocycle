@@ -1,12 +1,78 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="styles.css"/>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+      integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.css"
+      integrity="sha512-kJlvECunwXftkPwyvHbclArO8wszgBGisiLeuDFwNM8ws+wKIw0sv1os3ClWZOcrEB2eRXULYUsm8OVRGJKwGA=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link rel="stylesheet" href="styles.css" />
     <title>Sign-up</title>
-</head>
-<body>
-    
-</body>
+  </head>
+  <body>
+    <!-- Main container  -->
+    <div class="body-container">
+      <div class="status-bar">
+        <span class="status-bar-left time">9:41</span>
+        <div class="staus-icons">
+        <span class="status-bar-right">
+          <i class="fa-sharp fa-solid fa-signal icons"></i>
+          <i class="fa-solid fa-wifi icons"></i>
+          <i class="fa-solid fa-battery-three-quarters icons"></i>
+        </span>
+        </div>
+      </div>
+      <!-- Header with back button and logo  -->
+      <div class="header">
+        <button class="back-btn" type="button">
+          <i class="ri-arrow-left-s-line"></i>
+        </button>
+        <img
+          src="../Figma Assets/ecocycle logo.png"
+          alt="ecocycle logo"
+          class="eco-logo"
+        />
+      </div>
+      <!-- Form container -->
+      <div class="form-container">
+        <h2 class="signup-title">Sign Up</h2>
+        <form action="#" class="signup-form">
+          <label
+            >Name
+            <input type="text" placeholder="Your name" required />
+          </label>
+          <label
+            >Email
+            <input type="email" placeholder="Your email" required />
+          </label>
+          <label
+            >Password
+            <input type="password" placeholder="Your password" required />
+          </label>
+          <label
+            >Address
+            <input type="text" placeholder="Your address" required />
+          </label>
+          <label
+            >Phone Number
+            <input type="tel" placeholder="Your number" required />
+          </label>
+          <button type="submit" class="sumbit-btn">REGISTER</button>
+        </form>
+        <!-- Sign-in link  -->
+        <div class="signin-link">Have an account? <a href="#">Sign in</a></div>
+      </div>
+    </div>
+  </body>
 </html>
