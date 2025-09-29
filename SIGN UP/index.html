@@ -56,9 +56,15 @@
             >Email
             <input type="email" placeholder="Your email" required />
           </label>
-          <label
-            >Password
-            <input type="password" placeholder="Your password" required />
+          <label>
+            Password
+            <input 
+              type="password" 
+              placeholder="Your password" 
+              required 
+              pattern="^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$"
+              title="Password must be at least 8 characters and include letters, numbers, and special characters."
+            />
           </label>
           <label
             >Address
@@ -74,5 +80,8 @@
         <div class="signin-link">Have an account? <a href="../screen3.html">Sign in</a></div>
       </div>
     </div>
+
+    <script src="https://unpkg.com/scrollreveal"></script>
+    <script src="script.js"></script>
   </body>
 </html>
