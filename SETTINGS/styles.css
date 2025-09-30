@@ -1,0 +1,88 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+:root {
+  --background-color: #f5f7fa;
+  --black-color: #000000;
+  --primary-color: #1b7842;
+  --dark-primary-color: #06b047;
+  --secondary-color: #e9f3ed;
+}
+
+/* Body styles */
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+    Ubuntu, Cantarell, sans-serif;
+  background: linear-gradient(135deg, var(--background-color) 0%, #c3cfe2 100%);
+  min-height: 100vh;
+  overflow: hidden;
+  width: 100%;
+}
+.body-container {
+  margin: 0 auto;
+  max-width: 400px;
+  padding: 24px 16px 0 16px;
+  min-height: 100vh;
+  background: var(--background-color);
+  box-shadow: 0 0 30px rgba(0, 0, 0, 0.1);
+}
+.status-bar {
+  justify-content: center;
+  align-items: center;
+}
+.status-bar-img {
+  margin-left: -30px;
+  width: 400px;
+  object-fit: contain;
+}
+
+.header {
+  cursor: pointer;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: var(--primary-color);
+  color: var(--secondary-color);
+  border: none;
+  border-radius: 10px;
+  font-size: 24px;
+  font-weight: 700;
+  padding: 10px;
+  margin: 20px 0 20px 0;
+}
+.header .avatar {
+  object-fit: cover;
+  border-radius: 50%;
+  margin: 0 auto;
+}
+.back-btn {
+  font-weight: normal;
+  background: none;
+  transition: color 0.9s;
+}
+.back-btn:hover {
+  color: white;
+  font-weight: 900;
+}
+
+h5 {
+  font-weight: 500;
+  font-size: 20px;
+  opacity: 60%;
+  color: black;
+  margin-bottom: 5px;
+}
+
+.other-set {
+  background: var(--primary-color);
+  padding: 20px 10px;
+  color: var(--secondary-color);
+}
+li {
+  display: flex;
+  justify-content: space-between;
+  list-style: none;
+}
