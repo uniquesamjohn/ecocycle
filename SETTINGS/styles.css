@@ -10,6 +10,9 @@
   --dark-primary-color: #06b047;
   --secondary-color: #e9f3ed;
 }
+html{
+   background: linear-gradient(135deg, var(--background-color) 0%, #c3cfe2 100%) !important
+}
 
 /* Body styles */
 body {
@@ -17,13 +20,13 @@ body {
     Ubuntu, Cantarell, sans-serif;
   background: linear-gradient(135deg, var(--background-color) 0%, #c3cfe2 100%);
   min-height: 100vh;
-  overflow: hidden;
+  overflow-x: hidden;
   width: 100%;
 }
 .body-container {
   margin: 0 auto;
   max-width: 400px;
-  padding: 24px 16px 0 16px;
+  padding: 24px 16px 20px 16px;
   min-height: 100vh;
   background: var(--background-color);
   box-shadow: 0 0 30px rgba(0, 0, 0, 0.1);
@@ -80,9 +83,58 @@ h5 {
   background: var(--primary-color);
   padding: 20px 10px;
   color: var(--secondary-color);
+  border: none;
+  border-radius: 10px;
+
 }
 li {
   display: flex;
   justify-content: space-between;
   list-style: none;
+  margin-bottom: 10px;
+  padding: 10px;
+  transition: all 0.3s ease-in-out;
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 20px;
+
+ 
+}
+li:hover{
+   border: 1px solid var(--secondary-color);
+  background: var(--dark-primary-color);
+  font-weight: 600;
+  transform: scale(1.02);
+
+}
+.logout-con{
+margin-bottom: 30px;
+margin-top: 40px;
+}
+.logout{
+  margin: 20px 0 0 0;
+  padding: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 3px solid var(--primary-color);
+  border-radius: 10px;
+  width: 80%;
+  margin: 0 auto;
+  margin-top: 20px;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+  font-size: 20px;
+  font-weight: 500;
+  color: #000000;
+
+}
+.logout-icon{
+  margin-top: 10px;
+}
+.logout-con:hover .logout{
+  background: var(--primary-color);
+  color: var(--secondary-color);
+  font-weight: 600;
+  transform: scale(1.02);
 }
