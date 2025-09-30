@@ -137,3 +137,12 @@ li:hover {
   font-weight: 600;
   transform: scale(1.02);
 }
+
+
+@media (max-width: 400px) {
+  .status-bar-img {
+    width: 300px;
+    margin: 0 auto;
+  }
+}
+
