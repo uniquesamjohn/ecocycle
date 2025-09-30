@@ -10,8 +10,12 @@
   --dark-primary-color: #06b047;
   --secondary-color: #e9f3ed;
 }
-html{
-   background: linear-gradient(135deg, var(--background-color) 0%, #c3cfe2 100%) !important
+html {
+  background: linear-gradient(
+    135deg,
+    var(--background-color) 0%,
+    #c3cfe2 100%
+  ) !important;
 }
 
 /* Body styles */
@@ -85,7 +89,6 @@ h5 {
   color: var(--secondary-color);
   border: none;
   border-radius: 10px;
-
 }
 li {
   display: flex;
@@ -97,21 +100,18 @@ li {
   border-radius: 10px;
   cursor: pointer;
   font-size: 20px;
-
- 
 }
-li:hover{
-   border: 1px solid var(--secondary-color);
+li:hover {
+  border: 1px solid var(--secondary-color);
   background: var(--dark-primary-color);
   font-weight: 600;
   transform: scale(1.02);
-
 }
-.logout-con{
-margin-bottom: 30px;
-margin-top: 40px;
+.logout-con {
+  margin-bottom: 30px;
+  margin-top: 40px;
 }
-.logout{
+.logout {
   margin: 20px 0 0 0;
   padding: 10px;
   display: flex;
@@ -127,12 +127,11 @@ margin-top: 40px;
   font-size: 20px;
   font-weight: 500;
   color: #000000;
-
 }
-.logout-icon{
+.logout-icon {
   margin-top: 10px;
 }
-.logout-con:hover .logout{
+.logout-con:hover .logout {
   background: var(--primary-color);
   color: var(--secondary-color);
   font-weight: 600;
