@@ -132,8 +132,9 @@ li:hover {
   margin-top: 10px;
 }
 .logout-con:hover .logout {
-  background: var(--primary-color);
+  background: var(--dark-primary-color);
   color: var(--secondary-color);
+  border: 1px solid var(--secondary-color);
   font-weight: 600;
   transform: scale(1.02);
 }
