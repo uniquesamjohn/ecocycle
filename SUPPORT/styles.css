@@ -40,54 +40,68 @@ body {
   align-items: center;
 }
 
-.header{
-    display: flex;
-    gap: 1em;
-    align-items: center;
-   cursor: pointer;
-    color: var(--black-color);
-    border: none;
-    font-size: 18px;
-    font-weight: 700;
-    margin-bottom: 10px;
-
-
+.header {
+  display: flex;
+  gap: 1em;
+  align-items: center;
+  cursor: pointer;
+  color: var(--black-color);
+  border: none;
+  font-size: 18px;
+  font-weight: 700;
+  margin-bottom: 10px;
 }
-.hero{
-    background: var(--primary-color);
-    color: var(--secondary-color);
-    padding: 30px 20px;
-    border-radius: 10px;
+.hero {
+  background: var(--primary-color);
+  color: var(--secondary-color);
+  padding: 30px 20px;
+  border-radius: 10px;
 }
-.hero-title{
-    width: 48%;
-    font-size: 20px;
-    font-weight: 700;
-    font-style: bold;
+.hero-title {
+  width: 48%;
+  font-size: 20px;
+  font-weight: 700;
+  font-style: bold;
 }
-.help-options{
-    margin-top: 20px;
-   
-  
-
+.help-options {
+  margin-top: 20px;
 }
-.help-list{
-    display: flex;
-    flex-direction: column;
-    gap: 2em;
+.help-list {
+  display: flex;
+  flex-direction: column;
+  gap: 2em;
 }
-li{
-    display: flex;
-    justify-content: space-between;
-   align-items: center;
-      border: none;
-    border-radius: 10px;
- background: var(--primary-color);
- color: var(--secondary-color);
- padding: 10px;
+.back-btn {
+  font-weight: normal;
+  background: none;
+  transition: color 0.9s;
+}
+.back-btn:hover {
+  color: white;
+  font-weight: 900;
+}
+li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border: none;
+  border-radius: 10px;
+  background: var(--primary-color);
+  color: var(--secondary-color);
+  padding: 10px;
   list-style: none;
+  font-size: 20px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.3s, color 0.3s;
 }
-
+li:hover {
+  background: var(--dark-primary-color);
+  color: var(--secondary-color);
+  transform: scale(1.02);
+  font-weight: 600;
+  border: 1px solid var(--primary-color);
+}
 
 @media (max-width: 400px) {
   .status-bar-img {
