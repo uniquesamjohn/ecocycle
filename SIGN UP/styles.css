@@ -1,4 +1,4 @@
-/* Reset some default styles */
+  /* Reset some default styles */
 html {
   scroll-behavior: smooth;
   background: linear-gradient(135deg, var(--background-color) 0%, #c3cfe2 100%);
