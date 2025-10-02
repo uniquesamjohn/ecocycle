@@ -48,17 +48,18 @@
       <div class="form-container">
         <h2 class="signup-title">Sign Up</h2>
         <form action="#" class="signup-form">
-          <label
+          <label for="name"
             >Name
-            <input type="text" placeholder="Your name" required />
+            <input id ="name" type="text" placeholder="Your name" required />
           </label>
-          <label
+          <label for="email"
             >Email
-            <input type="email" placeholder="Your email" required />
+            <input id="email"type="email" placeholder="Your email" required />
           </label>
-          <label>
+          <label for="password">
             Password
             <input 
+            id="password"
               type="password" 
               placeholder="Your password" 
               required 
@@ -66,13 +67,13 @@
               title="Password must be at least 8 characters and include letters, numbers, and special characters."
             />
           </label>
-          <label
+          <label for="address"
             >Address
-            <input type="text" placeholder="Your address" required />
+            <input id="address" type="text" placeholder="Your address" required />
           </label>
-          <label
+          <label for="phone"
             >Phone Number
-            <input type="tel" placeholder="Your number" required />
+            <input id="phone" type="tel" placeholder="Your number" required />
           </label>
           <button type="submit" class="submit-btn">REGISTER</button>
         </form>
