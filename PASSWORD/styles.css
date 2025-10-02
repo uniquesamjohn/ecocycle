@@ -102,8 +102,12 @@ h4 {
 }
 
 @media (max-width: 400px) {
+
   .status-bar-img {
     width: 300px;
     margin: 0 auto;
+  }
+  .header-title{
+    margin-left: -1.5em;
   }
 }
