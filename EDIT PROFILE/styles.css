@@ -43,47 +43,42 @@ body {
   margin-bottom: 20px;
   width: 100%;
 }
-.edit-profile-btn{
-    position: absolute;
-   top: 160px;
-   left: 620px;
-    background-color: var(--dark-tertiary);
-    border-radius: 50%;
-    padding: 5px;
-    border: none;
-    cursor: pointer;
-    color: var(--background-color);
-    font-weight: 100;
-
-    
+.edit-profile-btn {
+  position: absolute;
+  top: 160px;
+  left: 620px;
+  background-color: var(--dark-tertiary);
+  border-radius: 50%;
+  padding: 5px;
+  border: none;
+  cursor: pointer;
+  color: var(--background-color);
+  font-weight: 100;
 }
 .avatar {
   object-fit: cover;
   border-radius: 50%;
   border: 3px solid var(--dark-tertiary);
 }
- form{
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-
-
- }
-label{
-    display: flex;
-    flex-direction: column;
-    font-size: 18px;
-    color: var(--black-color);
-    font-weight: 500;
-    margin-bottom: 5px;
-
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
 }
-input{
-    margin-top: 5px;
-    border: 4px solid var(--dark-tertiary);
-    border-radius: 10px;
-    padding: 10px;
-    background: var(--background-color);
-    outline: none;
-    transition: border 0.2s;
+label {
+  display: flex;
+  flex-direction: column;
+  font-size: 18px;
+  color: var(--black-color);
+  font-weight: 500;
+  margin-bottom: 5px;
+}
+input {
+  margin-top: 5px;
+  border: 4px solid var(--dark-tertiary);
+  border-radius: 10px;
+  padding: 10px;
+  background: var(--background-color);
+  outline: none;
+  transition: border 0.2s;
 }
