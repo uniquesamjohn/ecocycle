@@ -42,8 +42,47 @@ justify-content: space-between;
   cursor: pointer;
   color: var(--primary-color);
   font-size: 22px;
+} 
+button[title="profile"]{
+  background: var(--dark-tertiary);
+  border: none;
+  cursor: pointer;
+  color: var(--background-color);
+  border-radius: 50%;
+  padding: 5px;
+  font-weight: 100;
 }
-.header-title {
-  font-size: 24px;
+button[title="profile"]:hover{
+  background: var(--light-primary-color);
+  color: var(--background-color);
+  transition:all 0.3s ease-in-out;
+
+}
+.profile-img{
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+ 
+}
+.avatar{
+  object-fit: cover;
+  border-radius: 50%;
+   border: 3px solid var(--dark-tertiary);
+}
+.profile-info{
+  display: flex;
+  flex-direction: column;
+gap: 20px;
+justify-content: center;
+align-items: center;
+padding: 0 20px;
+margin-bottom: 50px;
+text-align: center;
+}
+.profile-info h2{
+  font-size: 18px;
   color: var(--black-color);
+  margin-bottom: 5px;
+  font-weight: 500;
+  
 }
