@@ -88,3 +88,11 @@ button[title="profile"]:hover {
   color: var(--black-color);
   font-weight: 400;
 }
+
+@media (max-width: 400px) {
+
+  .status-bar-img {
+    width: 300px;
+    margin: 0 auto;
+  }
+}
