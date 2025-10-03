@@ -33,7 +33,7 @@ body {
 .header {
   display: flex;
   align-items: center;
-justify-content: space-between;
+  justify-content: space-between;
   margin-bottom: 30px;
 }
 .header .back-btn {
@@ -42,8 +42,8 @@ justify-content: space-between;
   cursor: pointer;
   color: var(--primary-color);
   font-size: 22px;
-} 
-button[title="profile"]{
+}
+button[title="profile"] {
   background: var(--dark-tertiary);
   border: none;
   cursor: pointer;
@@ -52,37 +52,39 @@ button[title="profile"]{
   padding: 5px;
   font-weight: 100;
 }
-button[title="profile"]:hover{
+button[title="profile"]:hover {
   background: var(--light-primary-color);
   color: var(--background-color);
-  transition:all 0.3s ease-in-out;
-
+  transition: all 0.3s ease-in-out;
 }
-.profile-img{
+.profile-img {
   display: flex;
   justify-content: center;
   margin-bottom: 20px;
- 
 }
-.avatar{
+.avatar {
   object-fit: cover;
   border-radius: 50%;
-   border: 3px solid var(--dark-tertiary);
+  border: 3px solid var(--dark-tertiary);
 }
-.profile-info{
+.profile-info {
   display: flex;
   flex-direction: column;
-gap: 20px;
-justify-content: center;
-align-items: center;
-padding: 0 20px;
-margin-bottom: 50px;
-text-align: center;
+  gap: 30px;
+  justify-content: center;
+  align-items: center;
+  padding: 0 20px;
+  margin-bottom: 50px;
+  text-align: center;
 }
-.profile-info h2{
+.profile-info h2 {
   font-size: 18px;
   color: var(--black-color);
   margin-bottom: 5px;
   font-weight: 500;
-  
+}
+.profile-info p {
+  font-size: 16px;
+  color: var(--black-color);
+  font-weight: 400;
 }
