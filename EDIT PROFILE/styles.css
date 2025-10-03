@@ -65,6 +65,7 @@ form {
   flex-direction: column;
   gap: 10px;
 }
+
 label {
   display: flex;
   flex-direction: column;
@@ -73,6 +74,7 @@ label {
   font-weight: 500;
   margin-bottom: 5px;
 }
+
 input {
   margin-top: 5px;
   border: 4px solid var(--dark-tertiary);
@@ -80,5 +82,23 @@ input {
   padding: 10px;
   background: var(--background-color);
   outline: none;
-  transition: border 0.2s;
+  transition: all 0.4s;
+}
+input:focus{
+    border: 4px solid var(--light-primary-color);
+    box-shadow: 0 0 5px var(--light-primary-color);
+
+}
+input:hover{
+    border: 4px solid var(--light-primary-color);
+    box-shadow: 0 0 5px var(--light-primary-color);
+}
+
+
+@media (max-width: 400px) {
+
+  .status-bar-img {
+    width: 300px;
+    margin: 0 auto;
+  }
 }
