@@ -16,6 +16,8 @@ html {
     var(--background-color) 0%,
     #c3cfe2 100%
   ) !important;
+  scroll-behavior: smooth;
+  scrollbar-width:none;
 }
 
 /* Body styles */
@@ -26,14 +28,19 @@ body {
   min-height: 100vh;
   overflow-x: hidden;
   width: 100%;
+  
 }
 .body-container {
   margin: 0 auto;
   max-width: 400px;
-  padding: 24px 16px 20px 16px;
+  padding: 24px 16px 0 16px;
   min-height: 100vh;
   background: var(--background-color);
   box-shadow: 0 0 30px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
+   margin-top: 20px;
+  border-bottom-left-radius: 20px;
+  border-bottom-right-radius: 20px;
 }
 .status-bar {
   justify-content: center;
@@ -138,11 +145,54 @@ li:hover {
   font-weight: 600;
   transform: scale(1.02);
 }
+footer{
+  margin-bottom: 0;
+}
+.nav-icons{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0 auto;
+  flex-wrap: wrap;
+  width: 100%;
+  max-width: 400px;
+  padding: 10px 0; 
+cursor: pointer;
+
+}.footer{
+  font-size: 24px;
+  padding: 10px;
+  border-radius: 10px;
+  color: var(--black-color);
+  transition: all 0.3s ease-in-out;
+}
+.footer:hover{
+  color: var( --dark-primary-color);
+  font-weight: 900;
+  transform: scale(1.02);
+
+}
+.footer:focus{
+  outline: none;
+}
 
 
 @media (max-width: 400px) {
   .status-bar-img {
     width: 300px;
     margin: 0 auto;
+    margin-left: -20px;
   }
+  .user-name{
+    margin-left: 10px;
+    font-size: 20px;
+  }
+  .body-container{
+    margin-top: 0px;
+    margin-bottom: 0;
+    border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
 }
+  }
+
