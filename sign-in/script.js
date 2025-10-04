@@ -63,13 +63,11 @@ document.addEventListener('DOMContentLoaded', function() {
     });
     
     // Forgot password link
-    const forgotPasswordLink = document.querySelector('.forgot-password a');
+    const forgotPasswordLink = document.querySelector('.forgot_password');
     if (forgotPasswordLink) {
         forgotPasswordLink.addEventListener('click', function(event) {
             event.preventDefault();
-            console.log('Forgot password clicked');
-            // In a real app, this would open a password reset flow
-            alert('Password reset functionality would be implemented here');
+            window.location.href = '../forgot_password/index.html';
         });
     }
     

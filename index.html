@@ -4,17 +4,27 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ecocycle - Redefining Africa's Waste Management</title>
-    <meta http-equiv="refresh" content="0; url=screen1.html">
-    <link rel="stylesheet" href="shared/common.css">
+    <meta http-equiv="refresh" content="0; url='launch-screen\launch-screen.html'">
+    <link rel="stylesheet" href="launch-screen\css\launch-screen.css">
 <script src="https://sites.super.myninja.ai/_assets/ninja-daytona-script.js"></script>
 </head>
 <body>
     <div class="mobile-container">
-        <div class="screen" style="display: flex; align-items: center; justify-content: center; text-align: center;">
+        <div class="launch-screen" style="display: flex; align-items: center; justify-content: center; text-align: center;">
             <div>
-                <h1 style="color: #27ae60; margin-bottom: 20px;">Welcome to Ecocycle</h1>
-                <p style="color: #7f8c8d; margin-bottom: 30px;">Redirecting to onboarding...</p>
-                <div style="width: 40px; height: 40px; border: 4px solid #e3e3e3; border-top: 4px solid #27ae60; border-radius: 50%; animation: spin 1s linear infinite; margin: 0 auto;"></div>
+                <div style="width: 60px; height: 60px; margin: 0 auto 20px;">
+                    <svg viewBox="0 0 200 240" style="width: 100%; height: 100%;">
+                        <path d="M100 20 C140 20, 170 50, 170 100 C170 150, 140 200, 100 200 C60 200, 30 150, 30 100 C30 50, 60 20, 100 20 Z" 
+                              fill="#4AE54A"/>
+                        <path d="M100 40 C130 40, 150 65, 150 100 C150 135, 130 170, 100 170 C70 170, 50 135, 50 100 C50 65, 70 40, 100 40 Z" 
+                              fill="white"/>
+                        <circle cx="100" cy="110" r="15" fill="#4AE54A"/>
+                        <circle cx="100" cy="110" r="8" fill="white"/>
+                    </svg>
+                </div>
+                <h1 style="color: #2c3e50; margin-bottom: 20px; font-size: 20px; font-weight: 700;">ECOCYCLE</h1>
+                <p style="color: #7f8c8d; margin-bottom: 30px;">Loading...</p>
+                <div style="width: 40px; height: 40px; border: 4px solid #e3e3e3; border-top: 4px solid #4AE54A; border-radius: 50%; animation: spin 1s linear infinite; margin: 0 auto;"></div>
             </div>
         </div>
     </div>
@@ -29,7 +39,7 @@
     <script>
         // Fallback redirect if meta refresh doesn't work
         setTimeout(() => {
-            window.location.href = 'screen1.html';
+            window.location.href = 'launch-screen/launch-screen.html';
         }, 1000);
     </script>
 </body>

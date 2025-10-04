@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ECOCYCLE - Registration Success</title>
+    <title>ECOCYCLE - Forgot Password</title>
     <link rel="stylesheet" href="styles.css">
 <script src="https://sites.super.myninja.ai/_assets/ninja-daytona-script.js"></script>
 </head>
@@ -23,20 +23,25 @@
 
         <!-- Main Content -->
         <main>
-            <div class="success-icon">
-                <div class="success-circle-outer">
-                    <div class="success-circle-inner">
-                        <img src="assets/check_small.png" alt="Success Check" class="check-icon">
+            <div class="icon-container">
+                <div class="icon-circle-outer">
+                    <div class="icon-circle-inner">
+                        <img src="assets/key-icon.png" alt="Key Icon" class="key-icon">
                     </div>
                 </div>
             </div>
             
-            <div class="success-message">
-                <h1>SUCCESS</h1>
-                <p>Your account has been created</p>
-            </div>
-
-            <button class="connect-button"> <a href="../sign-in/index.html">Connect With a Driver</a></button>
+            <h1>Forgot Password?</h1>
+            <p class="subtitle">A verification code will be sent to your email</p>
+            
+            <form id="forgotPasswordForm">
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" placeholder="Your email" required>
+                </div>
+                
+                <button type="submit" class="submit-button">Send OTP</button>
+            </form>
         </main>
     </div>
     
