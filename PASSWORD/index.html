@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>password</title>
+    <link rel="stylesheet" href="styles.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+      integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.css"
+      integrity="sha512-kJlvECunwXftkPwyvHbclArO8wszgBGisiLeuDFwNM8ws+wKIw0sv1os3ClWZOcrEB2eRXULYUsm8OVRGJKwGA=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+  </head>
+  <body>
+    <div class="body-container">
+      <div class="status-bar">
+        <img
+          src="../Figma Assets/status-bar.png"
+          alt="status-bar"
+          class="status-bar-img"
+        />
+      </div>
+      <div class="header">
+        <button type="button" class="back-btn">
+          <i class="ri-arrow-left-s-line"></i>
+        </button>
+        <h3 class="header-title">Change password</h3>
+      </div>
+
+      <form action="#" class="pasword-form">
+        <label for="current-password"
+          ><span>Current password</span>
+          <input
+            id="current-password"
+            placeholder="Password"
+            type="password"
+            pattern="^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$"
+            title="Password must be at least 8 characters and include letters, numbers, and special characters."
+            required
+          />
+        </label>
+        <label for="new-password-password"
+          ><span>New password</span>
+          <input
+            id="new-password-password"
+            placeholder="Password"
+            type="password"
+            pattern="^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$"
+            title="Password must be at least 8 characters and include letters, numbers, and special characters."
+            required
+          />
+        </label>
+        <label for="confirm-password"
+          ><span>Confirm password</span>
+          <input
+            id="confirm-password"
+            placeholder="Password"
+            type="password"
+            pattern="^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$"
+            title="Password must be at least 8 characters and include letters, numbers, and special characters."
+            required
+          />
+        </label>
+      </form>
+      <div class="btn-container">
+        <h4>Save changes</h4>
+      </div>
+    </div>
+  </body>
+</html>
