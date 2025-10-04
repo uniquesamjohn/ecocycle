@@ -135,6 +135,11 @@ input:hover {
     width: 90px;
     height: 90px;
   }
+  .status-bar-img {
+    width: 300px;
+    margin: 0 auto;
+    margin-left: -20px;
+  }
   .edit-profile-btn {
     padding: 6px;
     font-size: 15px;
