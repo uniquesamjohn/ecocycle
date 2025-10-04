@@ -1,0 +1,174 @@
+/* General Reset and Base Styles */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    background-color: #f7f7f7; /* Light gray background for the app's 'outside' */
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    min-height: 100vh;
+}
+
+/* App Screen Container */
+.app-screen {
+    width: 375px; 
+    height: 600px; 
+    background-color: #ffffff; /* White background for the main content area */
+    position: relative;
+    overflow: hidden;
+    padding-top: 44px; /* Space for the status bar area */
+}
+
+/* Home Indicator (The thin line at the bottom of modern iPhones) */
+.home-indicator {
+    position: absolute;
+    bottom: 8px; /* Position it slightly up from the bottom edge */
+    left: 50%;
+    transform: translateX(-50%);
+    width: 134px; /* Standard width */
+    height: 5px; /* Standard height */
+    background-color: #000;
+    border-radius: 100px;
+}
+
+/* Text: Transfer NGN 3000 to */
+.app-screen .card:nth-child(2) {
+    display: flex;
+    justify-content: center;
+    margin-top: 100px; /* Space below status bar and above text */
+}
+.app-screen .card:nth-child(2) .item {
+    font-size: 19px;
+    font-weight: 600; /* Semi-bold */
+    color: #333333;
+}
+
+.stack {
+    margin-bottom: 50px;
+}
+
+
+
+/* Resetting the default anchor style for the image containers */
+.card {
+    display: block;
+    text-decoration: none;
+    color: inherit;
+    width: 100%; /* Take full width */
+}
+
+/* Status Bar */
+.app-screen .card:first-child .bar {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 44px; /* Standard iOS status bar height */
+    z-index: 10;
+}
+.network-bar {
+    width: 350px;
+    height: 100%;
+}
+
+/* Transfer NGN 3000 to (Text/Image) */
+.app-screen .card:nth-child(2) {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 10px;
+}
+.text {
+    height: 25px; /* Estimated height based on font size */
+    width: auto;
+}
+
+
+
+/* The Green Block Container (Where all the details are) */
+/* This is a hacky way to group the images that are separate in your HTML */
+.green-block-group {
+    background-color: #27ae60;
+    width: 85%; /* Slightly smaller than full width */
+    margin: 0 auto;
+    border-radius: 10px;
+    align-items: center;
+    padding: 30px 0; /* Vertical padding */
+}
+
+/* Apply the green background to the cards from 3 to 6 and center them */
+.app-screen .card:nth-child(3),
+.app-screen .card:nth-child(4),
+.app-screen .card:nth-child(5),
+.app-screen .card:nth-child(6) {
+    background-color: #27ae60;
+    width: 90%;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+}
+
+
+
+/* Radius for the top and bottom of the group */
+.app-screen .card:nth-child(3) {
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    margin-top: 10px; /* Space between "Transfer to" and the green block */
+    padding-top: 15px; /* Padding inside the green block */
+}
+.app-screen .card:nth-child(6) {
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    padding-bottom: 30px; /* Padding inside the green block */
+}
+
+/* Paystack Checkout Image */
+.stack {
+    height: 20px;
+    margin-bottom: 25px;
+    width: 230px;
+}
+
+/* Zenith Bank Image */
+.bank {
+    height: 20px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    width: 110px;
+}
+
+/* Account Number Image */
+.number {
+    height: 20px; 
+    margin-top: 10px;
+    margin-bottom: 20px;
+    width: 150px;
+}
+
+/* Expiration Time Image */
+.time-out {
+    height: 15px;
+    margin-top: 10px;
+    width: 110px;
+}
+
+/* Remove margin between the middle elements to keep them tight */
+.app-screen .card:nth-child(4),
+.app-screen .card:nth-child(5) {
+    margin-top: 0;
+    margin-bottom: 0;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+/* Reset the background color for the individual card elements (the items) within the group */
+.app-screen .card:nth-child(3) .item,
+.app-screen .card:nth-child(4) .item,
+.app-screen .card:nth-child(5) .item,
+.app-screen .card:nth-child(6) .item {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    background-color: #27ae60; /* Ensure the item itself also has the green background */
+}
