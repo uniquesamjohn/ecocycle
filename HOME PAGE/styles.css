@@ -230,9 +230,13 @@ footer {
 }
 .icons:hover,
 .icons:focus {
-  background: var(--dark-tertiary);
+  background: var(--light-primary-color);
   font-weight: 900;
   transform: scale(1.02);
+}
+.icons.active .footer {
+  color: #218c4a;
+  opacity: 1;
 }
 
 .footer {
