@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit profile</title>
+     <link rel="stylesheet" href="styles.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+      integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.css"
+      integrity="sha512-kJlvECunwXftkPwyvHbclArO8wszgBGisiLeuDFwNM8ws+wKIw0sv1os3ClWZOcrEB2eRXULYUsm8OVRGJKwGA=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+</head>
+<body>
+     <div class="body-container">
+      <div class="status-bar">
+        <img
+          src="../Figma Assets/status-bar.png"
+          alt="status-bar"
+          class="status-bar-img"
+        />
+      </div>
+       <button type="button" class="back-btn">
+          <i class="ri-arrow-left-s-line"></i>
+        </button>
+
+           <div class="profile-img">
+        <img
+          src="../Figma Assets/Avater 1.png"
+          alt="profile-img"
+          class="avatar"
+        />
+        <button type="button" class="edit-profile-btn" title="profile">
+          <i class="fa-classic fa-solid fa-pen-to-square"></i>
+        </button>
+      </div>
+
+     <form action="#" class="profile-details">
+        <label for="first-name" class="first">First Name
+            <input id="first-name" type="text" placeholder="Tyrone" required />
+        </label>
+          <label for="last-name" class="last">Last Name
+            <input id="last-name" type="text" placeholder="Daniel" required />
+        </label>
+       
+          <label for="tel" class="phone">Phone Number
+            <input id="tel" type="tel" placeholder="+2341234567899" required />
+            </label>
+               <label for="address" class="address">Address
+            <input id="address" type="email" placeholder="Tyrone Daniel123@contact.com" required />
+        </label>
+        <label for="sex" class="address">Gender
+            <input id="sex" type="sex" placeholder="Gender" required />
+        </label>
+     </form>
+     <div class="btn-container">
+        <button type="submit" class="save-btn">Save Changes</button>
+      </div>
+</body>
+</html>
