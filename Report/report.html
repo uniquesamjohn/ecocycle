@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="styles.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.css"
+      integrity="sha512-kJlvECunwXftkPwyvHbclArO8wszgBGisiLeuDFwNM8ws+wKIw0sv1os3ClWZOcrEB2eRXULYUsm8OVRGJKwGA=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+      integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <title>Help/Support</title>
+  </head>
+  <body>
+    <div class="body-container">
+      <!-- PAGE NAME -->
+      <div class="page-name">
+        <div class="icon">
+          <i class="fa-solid fa-chevron-left"></i>
+        </div>
+        <h2>Report Issues</h2>
+      </div>
+
+      <!-- Grid tabs -->
+      <div class="issues-grid">
+        <div class="issue-tab">
+          <div class="issue-icon">
+            <i class="ri-delete-bin-5-line"></i>
+          </div>
+          <div class="issue-description">
+            <h4>Missed Pickup</h4>
+            <p>My waste wasn't collected</p>
+          </div>
+        </div>
+
+        <!-- 2 -->
+        <div class="issue-tab">
+          <div class="issue-icon">
+            <i class="ri-delete-bin-fill"></i>
+          </div>
+          <div class="issue-description">
+            <h4>Overflowing</h4>
+            <p>The bin in my area is full</p>
+          </div>
+        </div>
+
+        <!-- 3 -->
+        <div class="issue-tab">
+          <div class="issue-icon">
+            <i class="ri-prohibited-line"></i>
+          </div>
+          <div class="issue-description">
+            <h4>Illegal Dumping</h4>
+            <p>They dumped waste nearby</p>
+          </div>
+        </div>
+
+        <!-- 4 -->
+        <div class="issue-tab">
+          <div class="issue-icon">
+            <i class="ri-bank-card-fill"></i>
+          </div>
+          <div class="issue-description">
+            <h4>Payment Issue</h4>
+            <p>Problem with my payment</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- BOTTOM -->
+      <div class="report-form">
+        <form action="">
+          <div class="input-group input-group-1">
+            <label for="issue-description" class="label-text">
+              Describe the Issue</label
+            >
+            <textarea
+              name=""
+              placeholder="E.g, Truck skipped our street today around 10AM"
+              id="issue-description"
+            ></textarea>
+          </div>
+
+          <div class="upload-photo-container">
+            <label for="upload-photo" class="upload-photo-label">
+              <span>
+                <i class="ri-camera-fill icon"></i>
+              </span>
+              Upload Photo <span class="optional"> (optional)</span>
+            </label>
+            <input
+              type="file"
+              name=""
+              id="upload-photo"
+              style="display: none"
+            />
+          </div>
+
+          <div class="location-toggle-container">
+            <div class="toggle-container" id="toggle-btn">
+              <div class="circle"></div>
+            </div>
+            <label for="" class="toggle-label">Use my current location</label>
+          </div>
+
+          <div class="input-group input-group-2">
+            <input type="text" Enter address or estate name... />
+          </div>
+
+          <div class="notify-checkbox-container">
+            <input type="checkbox" name="" id="notify-me" />
+            <label for="notify-me">Notify me when this issue is resolved</label>
+          </div>
+
+          <button type="submit" class="submit-btn">Submit Report</button>
+        </form>
+      </div>
+    </div>
+
+    <script src="./script.js"></script>
+  </body>
+</html>

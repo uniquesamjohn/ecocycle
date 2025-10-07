@@ -23,16 +23,9 @@
   <body>
     <!-- Main container  -->
     <div class="body-container">
-      <div class="status-bar">
-           <img
-          src="../Figma Assets/status-bar.png"
-          alt="status-bar"
-          class="status-bar-img"
-        />
-      </div>
       <!-- Header with back button and logo  -->
       <div class="header">
-        <button class="back-btn" type="button">
+        <button class="back-btn" type="button" onclick="window.history.back();">
           <i class="ri-arrow-left-s-line"></i>
         </button>
         <img
@@ -75,7 +68,7 @@
           <button type="submit" class="submit-btn">REGISTER</button>
         </form>
         <!-- Sign-in link  -->
-        <div class="signin-link">Have an account? <a href="#">Sign in</a></div>
+        <div class="signin-link">Have an account? <a href="../sign-in/index.html">Sign in</a></div>
       </div>
     </div>
 

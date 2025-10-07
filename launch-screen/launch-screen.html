@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ecocycle - Launch Screen</title>
+    <link rel="stylesheet" href="css/launch-screen.css">
+<script src="https://sites.super.myninja.ai/_assets/ninja-daytona-script.js"></script>
+</head>
+<body>
+    <div class="mobile-container">
+        <!-- Status Bar -->
+        <!-- REMOVED -->
+        <!-- Launch Screen Content -->
+        <div class="launch-screen">
+            <div class="logo-container">
+                <div class="logo-wrapper">
+                    <div class="ecocycle-logo">
+                        <svg viewBox="0 0 200 240" class="logo-svg">
+                            <!-- Outer droplet shape -->
+                            <path d="M100 20 C140 20, 170 50, 170 100 C170 150, 140 200, 100 200 C60 200, 30 150, 30 100 C30 50, 60 20, 100 20 Z" 
+                                  fill="#4AE54A" class="outer-drop"/>
+                            
+                            <!-- Inner white area -->
+                            <path d="M100 40 C130 40, 150 65, 150 100 C150 135, 130 170, 100 170 C70 170, 50 135, 50 100 C50 65, 70 40, 100 40 Z" 
+                                  fill="white" class="inner-area"/>
+                            
+                            <!-- Recycling arrows -->
+                            <g class="recycle-arrows" fill="#4AE54A">
+                                <!-- Top arrow -->
+                                <path d="M85 80 L100 65 L115 80 L110 85 L105 80 L105 95 L95 95 L95 80 L90 85 Z"/>
+                                
+                                <!-- Bottom right arrow -->
+                                <path d="M125 120 L140 135 L125 150 L120 145 L125 140 L110 140 L110 130 L125 130 L120 125 Z"/>
+                                
+                                <!-- Bottom left arrow -->
+                                <path d="M75 150 L60 135 L75 120 L80 125 L75 130 L90 130 L90 140 L75 140 L80 145 Z"/>
+                                
+                                <!-- Center circle -->
+                                <circle cx="100" cy="110" r="15" fill="#4AE54A"/>
+                                <circle cx="100" cy="110" r="8" fill="white"/>
+                            </g>
+                        </svg>
+                    </div>
+                </div>
+                
+                <div class="brand-text">
+                    <h1 class="ecocycle-text">ECOCYCLE</h1>
+                </div>
+            </div>
+            
+            <!-- Loading Indicator -->
+            <div class="loading-container">
+                <div class="loading-bar">
+                    <div class="loading-progress"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/launch-screen.js"></script>
+</body>
+</html>

@@ -18,7 +18,7 @@ html {
 body {
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
     Ubuntu, Cantarell, sans-serif;
-  background: linear-gradient(135deg, var(--background-color) 0%, #c3cfe2 100%);
+  background: linear-gradient(135deg, var(--background-color) 0%, #e9f3ed 100%);
   min-height: 100vh;
   overflow-x: hidden;
   width: 100%;
@@ -135,6 +135,48 @@ button[title="profile"]:hover {
 .profile-row .email {
   font-size: 12px;
 }
+
+footer {
+  margin-bottom: 0;
+  background: #e9f3ed;
+  border-radius: 15px;
+  border-top-left-radius: transparent;
+}
+.nav-icons {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0 auto;
+  flex-wrap: wrap;
+  width: 100%;
+  max-width: 400px;
+  padding: 5px 0;
+  cursor: pointer;
+  margin-bottom: 5px;
+}
+.icons {
+  font-size: 24px;
+  padding: 5px;
+  border-radius: 50%;
+  color: var(--black-color);
+  transition: all 0.3s ease-in-out;
+}
+.icons:hover,
+.icons:focus {
+  background: var(--light-primary-color);
+  font-weight: 900;
+  transform: scale(1.02);
+}
+.icons.active .footer {
+  color: #218c4a;
+  opacity: 1;
+}
+
+.footer {
+  color: var(--icon-color);
+}
+
 
 @media (max-width: 400px) {
   .status-bar-img {

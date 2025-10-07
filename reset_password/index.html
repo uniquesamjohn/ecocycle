@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ECOCYCLE - Reset Password</title>
+    <link rel="stylesheet" href="styles.css">
+<script src="https://sites.super.myninja.ai/_assets/ninja-daytona-script.js"></script>
+</head>
+<body>
+    <div class="container">
+        <!-- Status Bar -->
+        <div class="status-bar">
+            <img src="assets/status-bar.png" alt="Status Bar">
+        </div>
+
+        <!-- Header -->
+        <header>
+            <button class="back-button">
+                <img src="assets/arrow-left.png" alt="Back">
+            </button>
+        </header>
+
+        <!-- Main Content -->
+        <main>
+            <div class="icon-container">
+                <div class="icon-circle-outer">
+                    <div class="icon-circle-inner">
+                        <img src="assets/reset-icon.png" alt="Reset Icon" class="reset-icon">
+                    </div>
+                </div>
+            </div>
+            
+            <h1>Reset Password</h1>
+            <p class="subtitle">Input your new password</p>
+            
+            <form id="resetPasswordForm">
+                <div class="form-group">
+                    <label for="newPassword">New Password</label>
+                    <input type="password" id="newPassword" placeholder="Your password" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="confirmPassword">Confirm Password</label>
+                    <input type="password" id="confirmPassword" placeholder="Your password" required>
+                </div>
+                
+                <button type="submit" class="submit-button">Submit</button>
+            </form>
+        </main>
+    </div>
+    
+    <script src="script.js"></script>
+</body>
+</html>

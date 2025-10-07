@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ECOCYCLE - OTP Verification</title>
+    <link rel="stylesheet" href="styles.css">
+<script src="https://sites.super.myninja.ai/_assets/ninja-daytona-script.js"></script>
+</head>
+<body>
+    <div class="container">
+        <!-- Status Bar -->
+        <div class="status-bar">
+            <img src="assets/status-bar.png" alt="Status Bar">
+        </div>
+
+        <!-- Header -->
+        <header>
+            <button class="back-button">
+                <img src="assets/arrow-left.png" alt="Back">
+            </button>
+        </header>
+
+        <!-- Main Content -->
+        <main>
+            <div class="icon-container">
+                <div class="icon-circle-outer">
+                    <div class="icon-circle-inner">
+                        <img src="assets/message-icon.png" alt="Message Icon" class="message-icon">
+                    </div>
+                </div>
+            </div>
+            
+            <h1>OTP Verification</h1>
+            <p class="subtitle">Enter the code below to continue</p>
+            
+            <form id="verificationForm">
+                <div class="otp-container">
+                    <input type="text" class="otp-input" maxlength="1" pattern="[0-9]" inputmode="numeric" required>
+                    <input type="text" class="otp-input" maxlength="1" pattern="[0-9]" inputmode="numeric" required>
+                    <input type="text" class="otp-input" maxlength="1" pattern="[0-9]" inputmode="numeric" required>
+                    <input type="text" class="otp-input" maxlength="1" pattern="[0-9]" inputmode="numeric" required>
+                </div>
+                
+                <div class="resend-container">
+                    <button type="button" class="resend-button">Resend code</button>
+                </div>
+                
+                <button type="submit" class="submit-button">Reset Password</button>
+            </form>
+        </main>
+    </div>
+    
+    <script src="script.js"></script>
+</body>
+</html>
