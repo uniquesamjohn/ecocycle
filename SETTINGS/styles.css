@@ -76,10 +76,12 @@ body {
   font-weight: normal;
   background: none;
   transition: color 0.9s;
+  outline: none;
 }
 .back-btn:hover {
   color: white;
   font-weight: 900;
+  outline: none;
 }
 
 h5 {
@@ -98,6 +100,7 @@ h5 {
   border-radius: 10px;
 }
 li {
+  align-items: center;
   display: flex;
   justify-content: space-between;
   list-style: none;
@@ -108,12 +111,48 @@ li {
   cursor: pointer;
   font-size: 20px;
 }
+
+.password-link {
+  display: flex;
+  align-items: center;        /* ensures icons & text align vertically */
+  justify-content: space-between;
+  text-decoration: none;
+  color: inherit;
+  outline: none;
+  padding: 10px 15px;         /* optional – makes all list items uniform */
+}
+
+.password-icon img {
+  width: 20px;                /* match icon size to others */
+  height: 20px;
+  object-fit: contain;
+  vertical-align: middle;     /* align image with text baseline */
+  display: inline-block;
+}
+
 li:hover {
   border: 1px solid var(--secondary-color);
   background: var(--dark-primary-color);
   font-weight: 600;
   transform: scale(1.02);
 }
+
+.password-link {
+  text-decoration: none;  /* remove underline */
+  color: inherit;         /* keep original color */
+  outline: none;          /* remove blue outline */
+  display: flex;          /* optional – aligns icon, text, and arrow neatly */
+  align-items: center;
+  justify-content: space-between;
+}
+
+.password-link:focus,
+.password-link:active {
+  outline: none;
+  box-shadow: none;
+}
+
+
 .logout-con {
   margin-bottom: 30px;
   margin-top: 40px;
@@ -171,10 +210,23 @@ cursor: pointer;
   color: var( --dark-primary-color);
   font-weight: 900;
   transform: scale(1.02);
+  outline: none;
 
 }
 .footer:focus{
   outline: none;
+}
+
+.profile-link {
+  text-decoration: none; /* removes underline */
+  color: inherit;        /* keeps text/icon color the same */
+  outline: none;         /* removes outline */
+}
+
+.profile-link:focus,
+.profile-link:active {
+  outline: none;
+  box-shadow: none;
 }
 
 

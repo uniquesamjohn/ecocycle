@@ -79,6 +79,12 @@ body {
   color: #222;
   position: relative;
 }
+
+.notif-link {
+  text-decoration: none;
+  color: inherit;
+}
+
 .notif-bell .dot {
   position: absolute;
   top: 2px;
