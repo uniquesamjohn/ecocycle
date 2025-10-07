@@ -24,5 +24,5 @@ ScrollReveal().reveal(".form-container", {
 });
 ScrollReveal().reveal(".submit-btn", {
   ...animationslides,
-  delay: 1500,
+  delay: 1200,
 });
