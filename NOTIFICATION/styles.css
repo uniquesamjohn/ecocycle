@@ -3,6 +3,10 @@
   padding: 0;
   box-sizing: border-box;
 }
+html {
+  scroll-behavior: smooth;
+  scrollbar-width: none;
+}
 :root {
   --background-color: #f5f7fa;
   --black-color: #000000;
@@ -13,16 +17,21 @@ body {
     Ubuntu, Cantarell, sans-serif;
   background: linear-gradient(135deg, var(--background-color) 0%, #c3cfe2 100%);
   min-height: 100vh;
-  overflow: hidden;
+  overflow-x: hidden;
   width: 100%;
 }
 .body-container {
   margin: 0 auto;
   max-width: 400px;
-  padding: 24px 16px 0 16px;
+  padding: 24px 16px 200px 16px;
   min-height: 100vh;
   background: var(--background-color);
   box-shadow: 0 0 30px rgba(0, 0, 0, 0.1);
+   margin-bottom: 20px;
+  margin-top: 20px;
+  border-bottom-left-radius: 20px;
+  border-bottom-right-radius: 20px;
+  position: relative;
 }
 .status-bar {
   justify-content: center;
@@ -85,4 +94,20 @@ body {
     width: 300px;
     margin: 0 auto;
   }
+  .body-container {
+    margin-top: 0px;
+    margin-bottom: 0;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+  }
+  .notification-img{
+    left: 20px;
+  }
+  .notification-bg-img{
+    left: 30px;
+  }
+  .header{
+    gap: 3.5rem;
+  }
+  
 }
