@@ -23,16 +23,6 @@
   <body>
     <!-- Main container  -->
     <div class="body-container">
-      <div class="status-bar">
-        <span class="status-bar-left time">9:41</span>
-        <div class="status-icons">
-          <span class="status-bar-right">
-            <i class="fa-sharp fa-solid fa-signal icons"></i>
-            <i class="fa-solid fa-wifi icons"></i>
-            <i class="fa-solid fa-battery-three-quarters icons"></i>
-          </span>
-        </div>
-      </div>
       <!-- Header with back button and logo  -->
       <div class="header">
         <button class="back-btn" type="button" onclick="window.history.back();">
@@ -47,37 +37,36 @@
       <!-- Form container -->
       <div class="form-container">
         <h2 class="signup-title">Sign Up</h2>
-<<<<<<< HEAD
-        <form action="../success_reg/index.html" class="signup-form">
-                  <label
-                    >Name
-                    <input type="text" placeholder="Your name" required />
-                  </label>
-                  <label
-                    >Email
-                    <input type="email" placeholder="Your email" required />
-                  </label>
-                  <label>
-                    Password
-                    <input 
-                      type="password" 
-                      placeholder="Your password" 
-                      required 
-                      pattern="^[A-Za-z\d@$!%*#?&]{8,}$"
-                      title="Password must be at least 8 characters and can include letters, numbers, and special characters."
-                    />
-                  </label>
-                  <label
-                    >Address
-                    <input type="text" placeholder="Your address" required />
-                  </label>
-                  <label
-                    >Phone Number
-                    <input type="tel" placeholder="Your number" required />
-                  </label>
-                  <button type="submit" class="submit-btn">REGISTER</button>
-                </form>
-
+        <form action="#" class="signup-form">
+          <label for="name"
+            >Name
+            <input id ="name" type="text" placeholder="Your name" required />
+          </label>
+          <label for="email"
+            >Email
+            <input id="email"type="email" placeholder="Your email" required />
+          </label>
+          <label for="password">
+            Password
+            <input 
+            id="password"
+              type="password" 
+              placeholder="Your password" 
+              required 
+              pattern="^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$"
+              title="Password must be at least 8 characters and include letters, numbers, and special characters."
+            />
+          </label>
+          <label for="address"
+            >Address
+            <input id="address" type="text" placeholder="Your address" required />
+          </label>
+          <label for="phone"
+            >Phone Number
+            <input id="phone" type="tel" placeholder="Your number" required />
+          </label>
+          <button type="submit" class="submit-btn">REGISTER</button>
+        </form>
         <!-- Sign-in link  -->
         <div class="signin-link">Have an account? <a href="../sign-in/index.html">Sign in</a></div>
       </div>
