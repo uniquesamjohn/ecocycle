@@ -11,13 +11,8 @@
   --secondary-color: #e9f3ed;
 }
 html {
-  background: linear-gradient(
-    135deg,
-    var(--background-color) 0%,
-    #c3cfe2 100%
-  ) !important;
   scroll-behavior: smooth;
-  scrollbar-width:none;
+  scrollbar-width: none;
 }
 
 /* Body styles */
@@ -28,17 +23,16 @@ body {
   min-height: 100vh;
   overflow-x: hidden;
   width: 100%;
-  
 }
 .body-container {
   margin: 0 auto;
   max-width: 400px;
-  padding: 24px 16px 0 16px;
+  padding: 24px 16px 20px 16px;
   min-height: 100vh;
   background: var(--background-color);
   box-shadow: 0 0 30px rgba(0, 0, 0, 0.1);
   margin-bottom: 20px;
-   margin-top: 20px;
+  margin-top: 20px;
   border-bottom-left-radius: 20px;
   border-bottom-right-radius: 20px;
 }
@@ -145,10 +139,13 @@ li:hover {
   font-weight: 600;
   transform: scale(1.02);
 }
-footer{
+footer {
   margin-bottom: 0;
+  background: #e9f3ed;
+  border-radius: 15px;
+  border-top-left-radius: transparent;
 }
-.nav-icons{
+.nav-icons {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -157,26 +154,31 @@ footer{
   flex-wrap: wrap;
   width: 100%;
   max-width: 400px;
-  padding: 10px 0; 
-cursor: pointer;
-
-}.footer{
+  padding: 5px 0;
+  cursor: pointer;
+  margin-bottom: 5px;
+}
+.icons {
   font-size: 24px;
-  padding: 10px;
-  border-radius: 10px;
+  padding: 5px;
+  border-radius: 50%;
   color: var(--black-color);
   transition: all 0.3s ease-in-out;
 }
-.footer:hover{
-  color: var( --dark-primary-color);
+.icons:hover,
+.icons:focus {
+  background: var(--light-primary-color);
   font-weight: 900;
   transform: scale(1.02);
-
 }
-.footer:focus{
-  outline: none;
+.icons.active .footer {
+  color: #218c4a;
+  opacity: 1;
 }
 
+.footer {
+  color: var(--icon-color);
+}
 
 @media (max-width: 400px) {
   .status-bar-img {
@@ -184,15 +186,14 @@ cursor: pointer;
     margin: 0 auto;
     margin-left: -20px;
   }
-  .user-name{
+  .user-name {
     margin-left: 10px;
     font-size: 20px;
   }
-  .body-container{
+  .body-container {
     margin-top: 0px;
     margin-bottom: 0;
     border-bottom-left-radius: 0;
-  border-bottom-right-radius: 0;
-}
+    border-bottom-right-radius: 0;
   }
-
+}
