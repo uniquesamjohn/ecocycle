@@ -1,0 +1,435 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica', 'Arial', sans-serif;
+    background-color: #F3F4F6;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    overflow-x: hidden;
+}
+
+/* Status Bar */
+.status-bar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 44px;
+    background-color: #F3F4F6;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+    z-index: 1000;
+}
+
+.time {
+    font-size: 15px;
+    font-weight: 600;
+    color: #000;
+    letter-spacing: -0.3px;
+}
+
+.status-icons {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    color: #000;
+}
+
+.signal-icon,
+.wifi-icon {
+    width: 18px;
+    height: 12px;
+}
+
+.battery-icon {
+    width: 25px;
+    height: 12px;
+}
+
+/* Container */
+.container {
+    max-width: 375px;
+    margin: 0 auto;
+    min-height: 100vh;
+    background-color: #F3F4F6;
+    position: relative;
+    padding-bottom: 90px;
+}
+
+/* Header */
+.header {
+    position: fixed;
+    top: 44px;
+    left: 0;
+    right: 0;
+    max-width: 375px;
+    margin: 0 auto;
+    height: 60px;
+    background-color: #F3F4F6;
+    display: flex;
+    align-items: center;
+    padding: 0 16px;
+    z-index: 999;
+}
+
+.back-button {
+    background: none;
+    border: none;
+    padding: 8px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #000;
+    margin-right: 8px;
+}
+
+.back-button:active {
+    opacity: 0.6;
+}
+
+.header-title {
+    font-size: 20px;
+    font-weight: 600;
+    color: #000;
+    letter-spacing: -0.4px;
+}
+
+/* Content */
+.content {
+    padding: 120px 20px 20px;
+}
+
+/* Section */
+.section {
+    margin-bottom: 24px;
+}
+
+.section-label {
+    display: block;
+    font-size: 16px;
+    font-weight: 600;
+    color: #000;
+    margin-bottom: 12px;
+    letter-spacing: -0.3px;
+}
+
+/* Pickup Type Options */
+.pickup-type-options {
+    display: flex;
+    gap: 16px;
+}
+
+.pickup-option {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 16px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.pickup-option:active {
+    opacity: 0.7;
+}
+
+.radio-button {
+    width: 24px;
+    height: 24px;
+    border: 2px solid #1B7B4F;
+    border-radius: 50%;
+    position: relative;
+    flex-shrink: 0;
+    transition: all 0.2s ease;
+}
+
+.radio-button.selected::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 12px;
+    height: 12px;
+    background-color: #1B7B4F;
+    border-radius: 50%;
+}
+
+.option-text {
+    font-size: 16px;
+    color: #000;
+    font-weight: 400;
+}
+
+/* Date Time Input */
+.date-time-input {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 16px 20px;
+    background: #FFFFFF;
+    border: 2px solid #1B7B4F;
+    border-radius: 12px;
+    transition: all 0.2s ease;
+}
+
+.date-time-input:focus-within {
+    border-color: #166B42;
+    box-shadow: 0 0 0 3px rgba(27, 123, 79, 0.1);
+}
+
+.calendar-icon {
+    flex-shrink: 0;
+}
+
+.date-input,
+.time-input {
+    border: none;
+    background: transparent;
+    font-size: 16px;
+    color: #000;
+    font-weight: 400;
+    outline: none;
+    cursor: pointer;
+}
+
+.date-input {
+    flex: 1;
+}
+
+.time-input {
+    width: 60px;
+    text-align: right;
+}
+
+/* Address Input */
+.address-input {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.address-input input {
+    width: 100%;
+    padding: 16px 56px 16px 20px;
+    background: #FFFFFF;
+    border: 2px solid #1B7B4F;
+    border-radius: 12px;
+    font-size: 16px;
+    color: #000;
+    outline: none;
+    transition: all 0.2s ease;
+}
+
+.address-input input:focus {
+    border-color: #166B42;
+    box-shadow: 0 0 0 3px rgba(27, 123, 79, 0.1);
+}
+
+.address-input input::placeholder {
+    color: #9CA3AF;
+}
+
+.location-button {
+    position: absolute;
+    right: 12px;
+    width: 36px;
+    height: 36px;
+    background: #1B7B4F;
+    border: none;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.location-button:hover {
+    background: #166B42;
+}
+
+.location-button:active {
+    transform: scale(0.95);
+}
+
+/* Note Textarea */
+.note-textarea {
+    width: 100%;
+    padding: 16px 20px;
+    background: #FFFFFF;
+    border: 2px solid #1B7B4F;
+    border-radius: 12px;
+    font-size: 16px;
+    color: #000;
+    font-family: inherit;
+    outline: none;
+    resize: vertical;
+    min-height: 100px;
+    transition: all 0.2s ease;
+}
+
+.note-textarea:focus {
+    border-color: #166B42;
+    box-shadow: 0 0 0 3px rgba(27, 123, 79, 0.1);
+}
+
+.note-textarea::placeholder {
+    color: #9CA3AF;
+}
+
+/* Remind Section */
+.remind-section {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.dropdown-container {
+    position: relative;
+    display: inline-block;
+}
+
+.remind-dropdown {
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    padding: 10px 40px 10px 20px;
+    background: #1B7B4F;
+    border: none;
+    border-radius: 20px;
+    font-size: 14px;
+    color: #FFFFFF;
+    font-weight: 500;
+    cursor: pointer;
+    outline: none;
+    transition: all 0.2s ease;
+}
+
+.remind-dropdown:hover {
+    background: #166B42;
+}
+
+.remind-dropdown:active {
+    transform: scale(0.98);
+}
+
+.dropdown-icon {
+    position: absolute;
+    right: 16px;
+    top: 50%;
+    transform: translateY(-50%);
+    pointer-events: none;
+}
+
+/* Confirm Button */
+.confirm-button {
+    width: 100%;
+    padding: 18px;
+    background: #1B7B4F;
+    border: none;
+    border-radius: 12px;
+    font-size: 18px;
+    font-weight: 600;
+    color: #FFFFFF;
+    cursor: pointer;
+    margin-top: 32px;
+    transition: all 0.2s ease;
+    letter-spacing: -0.3px;
+}
+
+.confirm-button:hover {
+    background: #166B42;
+}
+
+.confirm-button:active {
+    transform: scale(0.98);
+}
+
+/* Bottom Navigation */
+footer {
+  margin-bottom: 0;
+  background: #e9f3ed;
+  border-radius: 15px;
+}
+.nav-icons {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0 auto;
+  flex-wrap: wrap;
+  width: 100%;
+  max-width: 400px;
+  padding: 5px 0;
+  cursor: pointer;
+  margin-bottom: 5px;
+}
+.icons {
+  font-size: 24px;
+  padding: 5px;
+  border-radius: 50%;
+  color: var(--black-color);
+  transition: all 0.3s ease-in-out;
+}
+
+icons a {
+    text-decoration: none;
+    color: black;
+}
+.icons:hover,
+.icons:focus {
+  background: var(--light-primary-color);
+  font-weight: 900;
+  transform: scale(1.02);
+}
+.icons.active .footer {
+  color: #218c4a;
+  opacity: 1;
+}
+
+.footer {
+  color: var(--icon-color);
+}
+
+@media (max-width: 400px) {
+  .status-bar-img {
+    width: 300px;
+    margin: 0 auto;
+    margin-left: -20px;
+  }
+}
+  .edit-profile-btn {
+    padding: 6px;
+    font-size: 15px;
+    bottom: 4px;
+    right: 20px;
+  }
+  .body-container {
+    margin-top: 0px;
+    margin-bottom: 0;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+  }
+  .pickup-img {
+    width: 70%;
+    margin-left: 20px;
+  }
+  .pickup-bg {
+  .pickup-bg {
+    object-fit: contain;
+    width: 300px;
+    margin: 0 auto;
+    margin-left: 40px;
+    padding: 0;
+  }
+}
