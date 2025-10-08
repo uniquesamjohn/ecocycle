@@ -124,6 +124,13 @@ main {
 .connect-button:hover {
     background-color: #167030;
 }
+.connect-button a{
+    color: white;
+    text-decoration: none;
+}
+.connect-button a:active{
+    color: white;
+}
 
 /* Responsive Adjustments */
 @media (max-width: 480px) {

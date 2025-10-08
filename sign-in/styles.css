@@ -126,6 +126,15 @@ input::placeholder {
     text-transform: uppercase;
     margin-bottom: 25px;
 }
+.login-button a{
+    text-decoration: none;
+    color: white;
+
+}
+.login-button a:active{
+    color: white;
+    
+}
 
 .login-button:hover {
     background-color: #167030;
@@ -141,6 +150,7 @@ input::placeholder {
     font-size: 14px;
     color: #333;
 }
+
 
 .signup-link {
     color: #1e8a3e;
