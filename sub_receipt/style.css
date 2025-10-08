@@ -1,0 +1,262 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica', 'Arial', sans-serif;
+    background-color: #f5f5f5;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 20px;
+}
+
+.mobile-container {
+    width: 375px;
+    height: 812px;
+    background-color: #EFEFEF;
+    border-radius: 40px;
+    overflow: hidden;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+
+/* Status Bar */
+.status-bar {
+    height: 44px;
+    padding: 0 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #EFEFEF;
+}
+
+.time {
+    font-size: 15px;
+    font-weight: 600;
+    color: #000000;
+    letter-spacing: -0.3px;
+}
+
+.status-icons {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.status-icons img {
+    height: 12px;
+    width: auto;
+}
+
+/* Header */
+.header {
+    padding: 20px 24px 24px;
+    background-color: #EFEFEF;
+    text-align: center;
+}
+
+.back-button {
+  background-color: transparent;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  padding: 8px 12px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+}
+
+.back-button img {
+  width: 20px;
+  height: 20px;
+  transition: transform 0.3s ease;
+}
+
+.back-button:hover {
+  background-color: rgba(0, 0, 0, 0.05); /* subtle hover background */
+}
+
+.back-button:hover img {
+  transform: translateX(-3px); /* slight left slide on hover */
+}
+
+.back-button:active {
+  transform: scale(0.95); /* click feedback */
+}
+
+.logo-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 16px;
+}
+
+.logo {
+    height: 40px;
+    width: auto;
+}
+
+.page-title {
+    font-size: 28px;
+    font-weight: 700;
+    color: #000000;
+    letter-spacing: -0.5px;
+}
+
+/* Main Content */
+.content {
+    flex: 1;
+    padding: 0 24px;
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
+}
+
+/* Info Card */
+.info-card {
+    border-radius: 16px;
+    padding: 24px 20px;
+    margin-bottom: 32px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+}
+
+.info-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 16px 0;
+    border-bottom: 1px solid #F0F0F0;
+}
+
+.info-row:last-child {
+    border-bottom: none;
+}
+
+.label {
+    font-size: 15px;
+    font-weight: 400;
+    color: #000000;
+    letter-spacing: -0.2px;
+}
+
+.value {
+    font-size: 15px;
+    font-weight: 500;
+    color: #000000;
+    text-align: right;
+    letter-spacing: -0.2px;
+}
+
+.status-active {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    color: #1B7842;
+}
+
+.check-icon {
+    width: 16px;
+    height: 16px;
+    flex-shrink: 0;
+}
+
+/* View Receipt Button */
+.view-receipt-btn {
+    width: 100%;
+    height: 56px;
+    background-color: transparent;
+    border: 2px solid #4B9D6D;
+    border-radius: 28px;
+    color: #4B9D6D;
+    font-size: 20px;
+    font-weight: 500;
+    letter-spacing: 0%;
+    line-height: 100%;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-bottom: 24px;
+}
+
+.view-receipt-btn:hover {
+    background-color: #34C759;
+    color: #FFFFFF;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(52, 199, 89, 0.3);
+}
+
+.view-receipt-btn:active {
+    transform: translateY(0);
+}
+
+/* Thank You Message */
+.thank-you {
+    text-align: center;
+    padding: 16px 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+}
+
+.thank-you-text {
+    font-size: 16px;
+    font-weight: 400;
+    color: #1B7842;
+    letter-spacing: 0%;
+    line-height: 120%;
+}
+
+.leaf-icon {
+    font-size: 16px;
+}
+
+/* Home Indicator */
+.home-indicator {
+    height: 34px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #EFEFEF;
+}
+
+.indicator-bar {
+    width: 134px;
+    height: 5px;
+    background-color: #000000;
+    border-radius: 100px;
+}
+
+/* Responsive adjustments */
+@media (max-width: 400px) {
+    .mobile-container {
+        width: 100%;
+        height: 100vh;
+        border-radius: 0;
+    }
+}
+
+/* Scrollbar styling */
+.content::-webkit-scrollbar {
+    width: 4px;
+}
+
+.content::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.content::-webkit-scrollbar-thumb {
+    background: #CCCCCC;
+    border-radius: 2px;
+}
+
+.content::-webkit-scrollbar-thumb:hover {
+    background: #AAAAAA;
+}
