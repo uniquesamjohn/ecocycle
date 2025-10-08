@@ -151,3 +151,79 @@ a.support-card, a.support-card-item {
     margin: 0;
 }
 
+footer {
+  margin-bottom: 0;
+  background: #e9f3ed;
+  border-radius: 15px;
+}
+.nav-icons {
+  display: flex;
+  color: #218c4a;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0 auto;
+  flex-wrap: wrap;
+  width: 100%;
+  max-width: 400px;
+  padding: 5px 0;
+  cursor: pointer;
+  margin-bottom: 5px;
+}
+.icons {
+  font-size: 24px;
+  padding: 5px;
+  border-radius: 50%;
+  color: var(--black-color);
+  transition: all 0.3s ease-in-out;
+}
+
+.icons a {
+    color: #218c4a;
+}
+.icons:hover,
+.icons:focus {
+  background: var(--light-primary-color);
+  font-weight: 900;
+  transform: scale(1.02);
+}
+.icons.active .footer {
+  color: #218c4a;
+  opacity: 1;
+}
+
+.footer {
+  color: var(--icon-color);
+}
+
+@media (max-width: 400px) {
+    .status-bar-img {
+     width: 300px;
+     margin: 0 auto;
+     margin-left: -20px;
+    }
+    .edit-profile-btn {
+     padding: 6px;
+     font-size: 15px;
+     bottom: 4px;
+     right: 20px;
+    }
+    .body-container {
+     margin-top: 0px;
+     margin-bottom: 0;
+     border-bottom-left-radius: 0;
+     border-bottom-right-radius: 0;
+     }
+    .pickup-img {
+     width: 70%;
+     margin-left: 20px;
+    }
+    .pickup-bg {
+     object-fit: contain;
+     width: 300px;
+     justify-content: center;
+     margin: 0 auto;
+     margin-left: 40px;
+     padding: 0;
+    }
+}
