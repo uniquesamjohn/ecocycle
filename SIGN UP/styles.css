@@ -105,6 +105,13 @@ body {
 .submit-btn:hover {
   background: #06b047;
 }
+.submit-btn a {
+  text-decoration: none;
+  color: white;
+}
+.submit-btn a:active {
+  color: white;
+}
 .signin-link {
   text-align: center;
   font-size: 12px;
