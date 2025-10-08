@@ -146,7 +146,17 @@ document.addEventListener('DOMContentLoaded', function() {
     updateDots();
     
     // Add keyboard navigation support
+    // Ignore key navigation when focus is inside an editable element (input, textarea, select, or contenteditable)
     document.addEventListener('keydown', function(e) {
+        try {
+            const active = document.activeElement;
+            const tag = active && active.tagName && active.tagName.toLowerCase();
+            const isEditable = active && (active.isContentEditable || tag === 'input' || tag === 'textarea' || tag === 'select');
+            if (isEditable) return; // user is typing in a form field
+        } catch (err) {
+            // swallow any errors and continue to allow navigation
+        }
+
         switch(e.key) {
             case 'ArrowRight':
             case ' ':

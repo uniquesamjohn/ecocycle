@@ -8,6 +8,8 @@
       const url = path.startsWith('http') ? path : (API_BASE + path);
       const method = (opts.method || 'GET').toUpperCase();
       const headers = Object.assign({ 'Content-Type': 'application/json' }, opts.headers || {});
+      const token = localStorage.getItem('ecocycle_token');
+      if (token) headers['Authorization'] = 'Bearer ' + token;
       const fetchOpts = { method, headers };
       if (opts.body && method !== 'GET' && method !== 'HEAD') fetchOpts.body = JSON.stringify(opts.body);
 

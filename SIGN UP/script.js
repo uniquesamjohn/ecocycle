@@ -6,6 +6,8 @@ document.addEventListener('DOMContentLoaded', function() {
         const url = path.startsWith('http') ? path : (API_BASE + path);
         const method = (opts.method || 'GET').toUpperCase();
         const headers = Object.assign({ 'Content-Type': 'application/json' }, opts.headers || {});
+        const token = localStorage.getItem('ecocycle_token');
+        if (token) headers['Authorization'] = 'Bearer ' + token;
         const fetchOpts = { method, headers };
         if (opts.body && method !== 'GET' && method !== 'HEAD') fetchOpts.body = JSON.stringify(opts.body);
 
@@ -23,6 +25,26 @@ document.addEventListener('DOMContentLoaded', function() {
 
     const form = document.querySelector('form');
     if (!form) return;
+
+    // Toggle driver-specific fields
+    const roleSelect = document.getElementById('role');
+    const licenseField = document.getElementById('license-field');
+    if (roleSelect) {
+        roleSelect.addEventListener('change', function(){
+            if (this.value === 'driver') {
+                licenseField.style.display = '';
+                document.getElementById('licenseNumber').required = true;
+            } else {
+                licenseField.style.display = 'none';
+                document.getElementById('licenseNumber').required = false;
+            }
+        });
+        // initial state
+        if (roleSelect.value === 'driver') {
+            licenseField.style.display = '';
+            document.getElementById('licenseNumber').required = true;
+        }
+    }
 
     form.addEventListener('submit', async function(e){
         e.preventDefault();
