@@ -84,6 +84,11 @@ body {
   outline: none;
   transition: border 0.2s;
 }
+
+.signup-form button a {
+  text-decoration: none;
+  color: white;
+}
 .submit-btn {
   margin-top: 10px;
   padding: 10px;
