@@ -33,7 +33,7 @@ document.addEventListener('DOMContentLoaded', function() {
             // Simulate successful login (in a real app, this would be after server validation)
             // Redirect to success page after successful login
             setTimeout(() => {
-                window.location.href = '../success_reg/index.html';
+                window.location.href = '../HOME PAGE/index.html';
             }, 1000);
         });
     }
@@ -57,7 +57,7 @@ document.addEventListener('DOMContentLoaded', function() {
             
             // Simulate successful social login
             setTimeout(() => {
-                window.location.href = '../success_reg/index.html';
+                window.location.href = '../HOME PAGE/index.html';
             }, 1000);
         });
     });
