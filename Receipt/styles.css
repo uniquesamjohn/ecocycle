@@ -61,6 +61,37 @@ body {
     text-align: center;
 }
 
+.back-button {
+  background-color: transparent;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  padding: 8px 12px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+}
+
+.back-button img {
+  width: 20px;
+  height: 20px;
+  transition: transform 0.3s ease;
+}
+
+.back-button:hover {
+  background-color: rgba(0, 0, 0, 0.05); /* subtle hover background */
+}
+
+.back-button:hover img {
+  transform: translateX(-3px); /* slight left slide on hover */
+}
+
+.back-button:active {
+  transform: scale(0.95); /* click feedback */
+}
+
 .logo-container {
     display: flex;
     justify-content: center;
