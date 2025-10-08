@@ -63,30 +63,54 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Form submission
     if (verificationForm) {
-        verificationForm.addEventListener('submit', function(event) {
+        verificationForm.addEventListener('submit', async function(event) {
             event.preventDefault();
-            
+            // lazy-load api helper by injecting script if needed
+            if (!window.apiFetch) {
+                await new Promise((resolve, reject) => {
+                    const s = document.createElement('script');
+                    s.src = '../shared/api.js';
+                    s.onload = () => resolve();
+                    s.onerror = (e) => reject(e);
+                    document.head.appendChild(s);
+                }).catch(e => console.warn('Could not load api helper', e));
+            }
+
             // Get OTP value
             const otp = Array.from(otpInputs).map(input => input.value).join('');
-            
-            if (otp.length !== 4) {
-                alert('Please enter the complete verification code');
+
+            if (otp.length !== 6 && otp.length !== 4) {
+                showMessage('Please enter the complete verification code');
                 return;
             }
-            
-            // Store OTP in sessionStorage
-            sessionStorage.setItem('verificationCode', otp);
-            
-            console.log('Verifying OTP:', otp);
-            
-            // Simulate OTP verification
-            // In a real app, this would verify with the server
-            alert('Code verified successfully!');
-            
-            // Redirect to reset password page
-            setTimeout(() => {
-                window.location.href = '../reset_password/index.html';
-            }, 1000);
+
+            const email = sessionStorage.getItem('resetEmail');
+            if (!email) {
+                showMessage('Missing email address. Please re-enter your email');
+                setTimeout(()=> window.location.href = '../forgot_password/index.html', 800);
+                return;
+            }
+
+            try {
+                showLoading();
+                await window.apiFetch('/auth/verify-otp', {
+                    method: 'POST',
+                    body: { email, otp }
+                });
+
+                // Store OTP in sessionStorage to allow reset page to proceed
+                sessionStorage.setItem('verificationCode', otp);
+                showMessage('OTP verified. Proceed to reset password');
+                setTimeout(() => {
+                    window.location.href = '../reset_password/index.html';
+                }, 900);
+            } catch (err) {
+                console.error('verifyOtp error', err);
+                const msg = (err && err.payload && err.payload.message) || err.message || 'OTP verification failed';
+                showMessage(msg);
+            } finally {
+                hideLoading();
+            }
         });
     }
     

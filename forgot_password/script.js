@@ -5,39 +5,56 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Add event listener for form submission
     if (forgotPasswordForm) {
-        forgotPasswordForm.addEventListener('submit', function(event) {
+        forgotPasswordForm.addEventListener('submit', async function(event) {
             // Prevent the default form submission
             event.preventDefault();
-            
+            // lazy-load api helper by injecting script if needed
+            if (!window.apiFetch) {
+                await new Promise((resolve, reject) => {
+                    const s = document.createElement('script');
+                    s.src = '../shared/api.js';
+                    s.onload = () => resolve();
+                    s.onerror = (e) => reject(e);
+                    document.head.appendChild(s);
+                }).catch(e => console.warn('Could not load api helper', e));
+            }
+
             // Get form values
-            const email = document.getElementById('email').value;
+            const email = document.getElementById('email').value.trim();
             
             // Basic validation
             if (!email) {
-                alert('Please enter your email address');
+                showMessage('Please enter your email address');
                 return;
             }
             
             // Email validation
             const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
             if (!emailRegex.test(email)) {
-                alert('Please enter a valid email address');
+                showMessage('Please enter a valid email address');
                 return;
             }
-            
-            // Store email in sessionStorage for use in other pages
-            sessionStorage.setItem('resetEmail', email);
-            
-            // Simulate sending OTP
-            console.log('Sending OTP to:', email);
-            
-            // Show success message
-            alert('Verification code has been sent to your email!');
-            
-            // Redirect to verification code page
-            setTimeout(() => {
-                window.location.href = '../verification_code/index.html';
-            }, 1000);
+
+            try {
+                showLoading();
+                await window.apiFetch('/auth/forgot-password', {
+                    method: 'POST',
+                    body: { email }
+                });
+
+                // Store email in sessionStorage for use in verification/reset pages
+                sessionStorage.setItem('resetEmail', email);
+                showMessage('Verification code sent to your email');
+                setTimeout(() => {
+                    window.location.href = '../verification_code/index.html';
+                }, 900);
+            } catch (err) {
+                console.error('forgotPassword error', err);
+                const msg = (err && err.payload && err.payload.message) || err.message || 'Failed to send OTP';
+                showMessage(msg);
+            } finally {
+                hideLoading();
+            }
         });
     }
     

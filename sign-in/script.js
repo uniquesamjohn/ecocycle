@@ -1,40 +1,75 @@
 // Wait for the DOM to be fully loaded
 document.addEventListener('DOMContentLoaded', function() {
+    // Import the shared api helper via global (we added shared/api.js as a module; but to keep compatibility
+    // with simple <script> tags we'll dynamically load it if needed)
+    function loadApiHelper(){
+        if (window.apiFetch) return Promise.resolve();
+        return new Promise((resolve, reject) => {
+            const script = document.createElement('script');
+            script.src = '../shared/api.js';
+            script.onload = () => resolve();
+            script.onerror = (e) => {
+                console.warn('Failed to load shared/api.js', e);
+                reject(e);
+            };
+            document.head.appendChild(script);
+        });
+    }
+
     // Get form element
     const loginForm = document.getElementById('loginForm');
-    
+
     // Add event listener for form submission
     if (loginForm) {
-        loginForm.addEventListener('submit', function(event) {
+        loginForm.addEventListener('submit', async function(event) {
             // Prevent the default form submission
             event.preventDefault();
-            
+            await loadApiHelper();
+
             // Get form values
-            const email = document.getElementById('email').value;
+            const email = document.getElementById('email').value.trim();
             const password = document.getElementById('password').value;
-            
+
             // Basic validation
             if (!email || !password) {
-                alert('Please fill in all fields');
+                showMessage('Please fill in all fields');
                 return;
             }
-            
+
             // Email validation
             const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
             if (!emailRegex.test(email)) {
-                alert('Please enter a valid email address');
+                showMessage('Please enter a valid email address');
                 return;
             }
-            
-            // Here you would typically send the data to a server
-            // For this example, we'll simulate a successful login
-            console.log('Login attempt:', { email, password });
-            
-            // Simulate successful login (in a real app, this would be after server validation)
-            // Redirect to success page after successful login
-            setTimeout(() => {
-                window.location.href = '../success_reg/index.html';
-            }, 1000);
+
+            try {
+                showLoading();
+                const payload = await window.apiFetch('/auth/signin', {
+                    method: 'POST',
+                    body: { email, password }
+                });
+
+                // Save token and user
+                if (payload && payload.token) {
+                    localStorage.setItem('ecocycle_token', payload.token);
+                }
+                if (payload && payload.user) {
+                    localStorage.setItem('ecocycle_user', JSON.stringify(payload.user));
+                }
+
+                showMessage('Login successful');
+                // redirect to home page or appropriate dashboard
+                setTimeout(() => {
+                    window.location.href = '../HOME PAGE/index.html';
+                }, 800);
+            } catch (err) {
+                console.error('Signin error', err);
+                const msg = (err && err.payload && err.payload.message) || err.message || 'Login failed';
+                showMessage(msg);
+            } finally {
+                hideLoading();
+            }
         });
     }
     

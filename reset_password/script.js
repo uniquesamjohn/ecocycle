@@ -45,49 +45,78 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Form submission
     if (resetPasswordForm) {
-        resetPasswordForm.addEventListener('submit', function(event) {
+        resetPasswordForm.addEventListener('submit', async function(event) {
             event.preventDefault();
-            
+
+            // lazy-load api helper by injecting script if needed
+            if (!window.apiFetch) {
+                await new Promise((resolve, reject) => {
+                    const s = document.createElement('script');
+                    s.src = '../shared/api.js';
+                    s.onload = () => resolve();
+                    s.onerror = (e) => reject(e);
+                    document.head.appendChild(s);
+                }).catch(e => console.warn('Could not load api helper', e));
+            }
+
             const newPassword = newPasswordInput.value;
             const confirmPassword = confirmPasswordInput.value;
-            
+
             // Validation
             if (!newPassword || !confirmPassword) {
-                alert('Please fill in all fields');
+                showMessage('Please fill in all fields');
                 return;
             }
-            
-            if (newPassword.length < 8) {
-                alert('Password must be at least 8 characters long');
+
+            if (newPassword.length < 6) {
+                showMessage('Password must be at least 6 characters long');
                 return;
             }
-            
+
             if (newPassword !== confirmPassword) {
-                alert('Passwords do not match');
+                showMessage('Passwords do not match');
                 return;
             }
-            
+
             // Check password strength
             const strength = checkPasswordStrength(newPassword);
             if (strength < 3) {
                 const proceed = confirm('Your password is weak. Do you want to continue?');
                 if (!proceed) return;
             }
-            
-            // Store password (in real app, this would be sent to server)
-            console.log('Password reset successful');
-            
-            // Clear sessionStorage
-            sessionStorage.removeItem('resetEmail');
-            sessionStorage.removeItem('verificationCode');
-            
-            // Show success message
-            alert('Password has been reset successfully!');
-            
-            // Redirect to successful reset page
-            setTimeout(() => {
-                window.location.href = '../successful_reset/index.html';
-            }, 1000);
+
+            const email = sessionStorage.getItem('resetEmail');
+            const otp = sessionStorage.getItem('verificationCode');
+
+            if (!email || !otp) {
+                showMessage('Missing reset context. Please re-run forgot password flow');
+                setTimeout(()=> window.location.href = '../forgot_password/index.html', 800);
+                return;
+            }
+
+            try {
+                showLoading();
+                // Backend expects a userId param; provide a placeholder 'reset' so controller can run
+                const res = await window.apiFetch('/auth/reset-password/reset', {
+                    method: 'POST',
+                    body: { email, newPassword, confirmPassword }
+                });
+
+                // Clear sessionStorage
+                sessionStorage.removeItem('resetEmail');
+                sessionStorage.removeItem('verificationCode');
+
+                showMessage('Password reset successfully');
+                setTimeout(() => {
+                    window.location.href = '../successful_reset/index.html';
+                }, 900);
+            } catch (err) {
+                console.error('resetPassword error', err);
+                const msg = (err && err.payload && err.payload.message) || err.message || 'Reset failed';
+                showMessage(msg);
+            } finally {
+                hideLoading();
+            }
         });
     }
     
