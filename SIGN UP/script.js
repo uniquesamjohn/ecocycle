@@ -1,71 +1,81 @@
 document.addEventListener('DOMContentLoaded', function() {
-	async function loadApiHelper(){
-		if (window.apiFetch) return Promise.resolve();
-		return new Promise((resolve, reject) => {
-			const script = document.createElement('script');
-			script.src = '../shared/api.js';
-			script.onload = () => resolve();
-			script.onerror = (e) => reject(e);
-			document.head.appendChild(script);
-		});
-	}
+    // Direct backend caller (no helpers, no dev console, no logger)
+    const API_BASE = window.ECO_API_BASE || 'https://ecocycle-techyjaunt.onrender.com/api';
 
-	const form = document.querySelector('form');
-	if (!form) return;
+    async function callBackend(path, opts = {}){
+        const url = path.startsWith('http') ? path : (API_BASE + path);
+        const method = (opts.method || 'GET').toUpperCase();
+        const headers = Object.assign({ 'Content-Type': 'application/json' }, opts.headers || {});
+        const fetchOpts = { method, headers };
+        if (opts.body && method !== 'GET' && method !== 'HEAD') fetchOpts.body = JSON.stringify(opts.body);
 
-	form.addEventListener('submit', async function(e){
-		e.preventDefault();
-		await loadApiHelper();
+        const res = await fetch(url, fetchOpts);
+        const text = await res.text();
+        let json;
+        try { json = text ? JSON.parse(text) : {}; } catch (err) { json = text; }
+        if (!res.ok) {
+            const err = new Error((json && json.message) || res.statusText || 'Request failed');
+            err.payload = json;
+            throw err;
+        }
+        return json;
+    }
 
-		const name = (document.getElementById('name') || {}).value || '';
-		const email = (document.getElementById('email') || {}).value || '';
-		const password = (document.getElementById('password') || {}).value || '';
-		const roleEl = document.querySelector('select[name="role"]') || document.getElementById('role');
-		const role = roleEl ? roleEl.value : 'household';
+    const form = document.querySelector('form');
+    if (!form) return;
 
-		if (!name || !email || !password) {
-			showMessage('Please fill name, email and password');
-			return;
-		}
+    form.addEventListener('submit', async function(e){
+        e.preventDefault();
 
-		const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-		if (!emailRegex.test(email)) {
-			showMessage('Please enter a valid email');
-			return;
-		}
+        const name = (document.getElementById('name') || {}).value || '';
+        const email = (document.getElementById('email') || {}).value || '';
+        const password = (document.getElementById('password') || {}).value || '';
+        const roleEl = document.querySelector('select[name="role"]') || document.getElementById('role');
+        const role = roleEl ? roleEl.value : 'household';
 
-		if (password.length < 6) {
-			showMessage('Password must be at least 6 characters');
-			return;
-		}
+        if (!name || !email || !password) {
+            showMessage('Please fill name, email and password');
+            return;
+        }
 
-		const body = { name, email, password, role };
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!emailRegex.test(email)) {
+            showMessage('Please enter a valid email');
+            return;
+        }
 
-		// Collect optional driver fields if present
-		const license = document.getElementById('licenseNumber');
-		if (license && license.value) body.licenseNumber = license.value;
+        if (password.length < 6) {
+            showMessage('Password must be at least 6 characters');
+            return;
+        }
 
-		try {
-			showLoading();
-			const res = await window.apiFetch('/auth/signup', {
-				method: 'POST',
-				body
-			});
+        const body = { name, email, password, role };
 
-			if (res && res.token) localStorage.setItem('ecocycle_token', res.token);
-			if (res && res.user) localStorage.setItem('ecocycle_user', JSON.stringify(res.user));
+        // Collect optional driver fields if present
+        const license = document.getElementById('licenseNumber');
+        if (license && license.value) body.licenseNumber = license.value;
 
-			showMessage('Account created. Check your email for verification.');
-			setTimeout(()=>{
-				// Redirect to a verification or success page if available
-				window.location.href = '../success_reg/index.html';
-			}, 900);
-		} catch (err) {
-			console.error('Signup error', err);
-			const msg = (err && err.payload && err.payload.message) || err.message || 'Signup failed';
-			showMessage(msg);
-		} finally {
-			hideLoading();
-		}
-	});
+        try {
+            showLoading();
+                // POST directly to backend route that saves user to DB
+                const res = await callBackend('/auth/signup', {
+                    method: 'POST',
+                    body
+                });
+
+            if (res && res.token) localStorage.setItem('ecocycle_token', res.token);
+            if (res && res.user) localStorage.setItem('ecocycle_user', JSON.stringify(res.user));
+
+            showMessage('Account created. Check your email for verification.');
+            setTimeout(()=>{
+                window.location.href = '../success_reg/index.html';
+            }, 900);
+        } catch (err) {
+            console.error('Signup error', err);
+            const msg = (err && err.payload && err.payload.message) || err.message || 'Signup failed';
+            showMessage(msg);
+        } finally {
+            hideLoading();
+        }
+    });
 });

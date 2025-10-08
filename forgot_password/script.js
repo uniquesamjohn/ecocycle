@@ -1,5 +1,27 @@
 // Wait for the DOM to be fully loaded
 document.addEventListener('DOMContentLoaded', function() {
+    // Direct backend caller
+    const API_BASE = window.ECO_API_BASE || 'https://ecocycle-techyjaunt.onrender.com/api';
+
+    async function callBackend(path, opts = {}){
+        const url = path.startsWith('http') ? path : (API_BASE + path);
+        const method = (opts.method || 'GET').toUpperCase();
+        const headers = Object.assign({ 'Content-Type': 'application/json' }, opts.headers || {});
+        const fetchOpts = { method, headers };
+        if (opts.body && method !== 'GET' && method !== 'HEAD') fetchOpts.body = JSON.stringify(opts.body);
+
+        const res = await fetch(url, fetchOpts);
+        const text = await res.text();
+        let json;
+        try { json = text ? JSON.parse(text) : {}; } catch (err) { json = text; }
+        if (!res.ok) {
+            const err = new Error((json && json.message) || res.statusText || 'Request failed');
+            err.payload = json;
+            throw err;
+        }
+        return json;
+    }
+
     // Get form element
     const forgotPasswordForm = document.getElementById('forgotPasswordForm');
     
@@ -8,16 +30,6 @@ document.addEventListener('DOMContentLoaded', function() {
         forgotPasswordForm.addEventListener('submit', async function(event) {
             // Prevent the default form submission
             event.preventDefault();
-            // lazy-load api helper by injecting script if needed
-            if (!window.apiFetch) {
-                await new Promise((resolve, reject) => {
-                    const s = document.createElement('script');
-                    s.src = '../shared/api.js';
-                    s.onload = () => resolve();
-                    s.onerror = (e) => reject(e);
-                    document.head.appendChild(s);
-                }).catch(e => console.warn('Could not load api helper', e));
-            }
 
             // Get form values
             const email = document.getElementById('email').value.trim();
@@ -37,7 +49,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
             try {
                 showLoading();
-                await window.apiFetch('/auth/forgot-password', {
+                await callBackend('/auth/forgot-password', {
                     method: 'POST',
                     body: { email }
                 });

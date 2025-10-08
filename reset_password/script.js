@@ -48,15 +48,26 @@ document.addEventListener('DOMContentLoaded', function() {
         resetPasswordForm.addEventListener('submit', async function(event) {
             event.preventDefault();
 
-            // lazy-load api helper by injecting script if needed
-            if (!window.apiFetch) {
-                await new Promise((resolve, reject) => {
-                    const s = document.createElement('script');
-                    s.src = '../shared/api.js';
-                    s.onload = () => resolve();
-                    s.onerror = (e) => reject(e);
-                    document.head.appendChild(s);
-                }).catch(e => console.warn('Could not load api helper', e));
+            // Direct backend caller
+            const API_BASE = window.ECO_API_BASE || 'https://ecocycle-techyjaunt.onrender.com/api';
+
+            async function callBackend(path, opts = {}){
+                const url = path.startsWith('http') ? path : (API_BASE + path);
+                const method = (opts.method || 'GET').toUpperCase();
+                const headers = Object.assign({ 'Content-Type': 'application/json' }, opts.headers || {});
+                const fetchOpts = { method, headers };
+                if (opts.body && method !== 'GET' && method !== 'HEAD') fetchOpts.body = JSON.stringify(opts.body);
+
+                const res = await fetch(url, fetchOpts);
+                const text = await res.text();
+                let json;
+                try { json = text ? JSON.parse(text) : {}; } catch (err) { json = text; }
+                if (!res.ok) {
+                    const err = new Error((json && json.message) || res.statusText || 'Request failed');
+                    err.payload = json;
+                    throw err;
+                }
+                return json;
             }
 
             const newPassword = newPasswordInput.value;
@@ -97,7 +108,7 @@ document.addEventListener('DOMContentLoaded', function() {
             try {
                 showLoading();
                 // Backend expects a userId param; provide a placeholder 'reset' so controller can run
-                const res = await window.apiFetch('/auth/reset-password/reset', {
+                const res = await callBackend('/auth/reset-password/reset', {
                     method: 'POST',
                     body: { email, newPassword, confirmPassword }
                 });

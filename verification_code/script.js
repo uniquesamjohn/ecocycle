@@ -1,5 +1,26 @@
 // Wait for the DOM to be fully loaded
 document.addEventListener('DOMContentLoaded', function() {
+    // Direct backend caller
+    const API_BASE = window.ECO_API_BASE || 'https://ecocycle-techyjaunt.onrender.com/api';
+
+    async function callBackend(path, opts = {}){
+        const url = path.startsWith('http') ? path : (API_BASE + path);
+        const method = (opts.method || 'GET').toUpperCase();
+        const headers = Object.assign({ 'Content-Type': 'application/json' }, opts.headers || {});
+        const fetchOpts = { method, headers };
+        if (opts.body && method !== 'GET' && method !== 'HEAD') fetchOpts.body = JSON.stringify(opts.body);
+
+        const res = await fetch(url, fetchOpts);
+        const text = await res.text();
+        let json;
+        try { json = text ? JSON.parse(text) : {}; } catch (err) { json = text; }
+        if (!res.ok) {
+            const err = new Error((json && json.message) || res.statusText || 'Request failed');
+            err.payload = json;
+            throw err;
+        }
+        return json;
+    }
     const otpInputs = document.querySelectorAll('.otp-input');
     const verificationForm = document.getElementById('verificationForm');
     const resendButton = document.querySelector('.resend-button');
@@ -65,16 +86,7 @@ document.addEventListener('DOMContentLoaded', function() {
     if (verificationForm) {
         verificationForm.addEventListener('submit', async function(event) {
             event.preventDefault();
-            // lazy-load api helper by injecting script if needed
-            if (!window.apiFetch) {
-                await new Promise((resolve, reject) => {
-                    const s = document.createElement('script');
-                    s.src = '../shared/api.js';
-                    s.onload = () => resolve();
-                    s.onerror = (e) => reject(e);
-                    document.head.appendChild(s);
-                }).catch(e => console.warn('Could not load api helper', e));
-            }
+
 
             // Get OTP value
             const otp = Array.from(otpInputs).map(input => input.value).join('');
@@ -93,7 +105,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
             try {
                 showLoading();
-                await window.apiFetch('/auth/verify-otp', {
+                await callBackend('/auth/verify-otp', {
                     method: 'POST',
                     body: { email, otp }
                 });

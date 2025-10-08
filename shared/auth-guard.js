@@ -1,20 +1,30 @@
 // Simple auth guard: call /api/auth/me to confirm logged-in user. If unauthorized, redirect to sign-in.
 (function(){
   async function ensureAuth(){
-    // Ensure apiFetch helper is available
-    if (!window.apiFetch){
-      try{
-        var s = document.createElement('script');
-        s.src = './api.js';
-        document.head.appendChild(s);
-        await new Promise((r,rej)=>{s.onload=r;s.onerror=rej});
-      }catch(e){
-        console.warn('Could not load api helper for auth-guard', e);
+    // Direct backend caller
+    const API_BASE = window.ECO_API_BASE || 'https://ecocycle-techyjaunt.onrender.com/api';
+
+    async function callBackend(path, opts = {}){
+      const url = path.startsWith('http') ? path : (API_BASE + path);
+      const method = (opts.method || 'GET').toUpperCase();
+      const headers = Object.assign({ 'Content-Type': 'application/json' }, opts.headers || {});
+      const fetchOpts = { method, headers };
+      if (opts.body && method !== 'GET' && method !== 'HEAD') fetchOpts.body = JSON.stringify(opts.body);
+
+      const res = await fetch(url, fetchOpts);
+      const text = await res.text();
+      let json;
+      try { json = text ? JSON.parse(text) : {}; } catch (err) { json = text; }
+      if (!res.ok) {
+        const err = new Error((json && json.message) || res.statusText || 'Request failed');
+        err.payload = json;
+        throw err;
       }
+      return json;
     }
 
     try{
-      const res = await window.apiFetch('/auth/me');
+      const res = await callBackend('/auth/me');
       // if user returned, we are authenticated
       if (res && res.user){
         // optionally store/refresh local user

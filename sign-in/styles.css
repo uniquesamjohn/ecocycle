@@ -97,6 +97,9 @@ input {
     color: #333;
 }
 
+/* Ensure inputs are above any overlays and clickable */
+.container, main, form, input, button { position: relative; z-index: 2; }
+
 input::placeholder {
     color: #aaa;
 }

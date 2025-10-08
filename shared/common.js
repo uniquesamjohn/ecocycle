@@ -16,6 +16,7 @@ function showMessage(message) {
         font-size: 14px;
         z-index: 1000;
         box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+        pointer-events: none; /* do not block clicks */
     `;
     toast.textContent = message;
     

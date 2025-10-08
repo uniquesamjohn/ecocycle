@@ -1,19 +1,25 @@
 // Wait for the DOM to be fully loaded
 document.addEventListener('DOMContentLoaded', function() {
-    // Import the shared api helper via global (we added shared/api.js as a module; but to keep compatibility
-    // with simple <script> tags we'll dynamically load it if needed)
-    function loadApiHelper(){
-        if (window.apiFetch) return Promise.resolve();
-        return new Promise((resolve, reject) => {
-            const script = document.createElement('script');
-            script.src = '../shared/api.js';
-            script.onload = () => resolve();
-            script.onerror = (e) => {
-                console.warn('Failed to load shared/api.js', e);
-                reject(e);
-            };
-            document.head.appendChild(script);
-        });
+    // Direct backend caller (no helpers, no dev console, no logger)
+    const API_BASE = window.ECO_API_BASE || 'https://ecocycle-techyjaunt.onrender.com/api';
+
+    async function callBackend(path, opts = {}){
+        const url = path.startsWith('http') ? path : (API_BASE + path);
+        const method = (opts.method || 'GET').toUpperCase();
+        const headers = Object.assign({ 'Content-Type': 'application/json' }, opts.headers || {});
+        const fetchOpts = { method, headers };
+        if (opts.body && method !== 'GET' && method !== 'HEAD') fetchOpts.body = JSON.stringify(opts.body);
+
+        const res = await fetch(url, fetchOpts);
+        const text = await res.text();
+        let json;
+        try { json = text ? JSON.parse(text) : {}; } catch (err) { json = text; }
+        if (!res.ok) {
+            const err = new Error((json && json.message) || res.statusText || 'Request failed');
+            err.payload = json;
+            throw err;
+        }
+        return json;
     }
 
     // Get form element
@@ -44,8 +50,20 @@ document.addEventListener('DOMContentLoaded', function() {
             }
 
             try {
+                // inline error if sign-in fails
+                let errEl = document.getElementById('login-error');
+                if (!errEl) {
+                    errEl = document.createElement('div');
+                    errEl.id = 'login-error';
+                    errEl.style.cssText = 'color: #fff; background: #e74c3c; padding: 8px 12px; border-radius:6px; margin:8px 0; display:none;';
+                    loginForm.parentNode.insertBefore(errEl, loginForm);
+                }
+
+                // clear any previous error
+                errEl.style.display = 'none';
+
                 showLoading();
-                const payload = await window.apiFetch('/auth/signin', {
+                const payload = await callBackend('/auth/signin', {
                     method: 'POST',
                     body: { email, password }
                 });
@@ -61,11 +79,17 @@ document.addEventListener('DOMContentLoaded', function() {
                 showMessage('Login successful');
                 // redirect to home page or appropriate dashboard
                 setTimeout(() => {
-                    window.location.href = '../HOME PAGE/index.html';
+                    window.location.href = '../HOME_PAGE/index.html';
                 }, 800);
             } catch (err) {
                 console.error('Signin error', err);
                 const msg = (err && err.payload && err.payload.message) || err.message || 'Login failed';
+                // show inline and toast
+                const errEl = document.getElementById('login-error');
+                if (errEl) {
+                    errEl.textContent = msg;
+                    errEl.style.display = 'block';
+                }
                 showMessage(msg);
             } finally {
                 hideLoading();
@@ -106,14 +130,6 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
     
-    // Sign up link
-    const signupLink = document.querySelector('SIGN UP/index.html');
-    if (signupLink) {
-        signupLink.addEventListener('click', function(event) {
-            event.preventDefault();
-            console.log('Sign up clicked');
-            // In a real app, this would redirect to the sign-up page
-            alert('Sign up functionality would be implemented here');
-        });
-    }
+    // Sign up link is already handled by the anchor tag in HTML
+    // No need for additional JavaScript handling as it's a simple link
 });
