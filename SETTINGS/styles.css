@@ -180,6 +180,11 @@ li:hover {
 .logout-icon {
   margin-top: 10px;
 }
+
+.logout-con a {
+  text-decoration: none;
+  color: black;
+}
 .logout-con:hover .logout {
   background: var(--dark-primary-color);
   color: var(--secondary-color);
@@ -213,9 +218,14 @@ footer {
   color: var(--black-color);
   transition: all 0.3s ease-in-out;
 }
+
+.icons a {
+  color: black;
+}
 .icons:hover,
 .icons:focus {
-  background: var(--dark-primary-color);
+  color: #06b047;
+  background: var(--light-primary-color);
   font-weight: 900;
   transform: scale(1.02);
 }
@@ -257,3 +267,4 @@ footer {
     border-bottom-right-radius: 0;
   }
 }
+

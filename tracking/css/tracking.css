@@ -1,0 +1,89 @@
+/*General Setup */
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'SF Pro Display', sans-serif; /* Using a common iOS-style font */
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    min-height: 100vh;
+    background-color: #f0f0f0; /* Light background for the surrounding area */
+}
+
+.app-screen {
+    width: 350px; 
+    height: 844px;
+    background-color: white;
+    position: relative; /* All elements inside will be positioned relative to this */
+    overflow: hidden; /* Contains all elements */
+}
+
+/* Helper Class for Anchor Tags acting as containers */
+.tracker-card {
+    display: block; /* Make anchors block-level for layout */
+    text-decoration: none; /* Remove underline */
+}
+
+
+/* The image Status bar */
+.bar {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 44px; 
+    z-index: 100; /* Keep it on top */
+}
+
+.network-bar {
+    width: 100%;
+    height: 100%;
+    object-fit: contain; /* Ensure the image scales correctly if needed, though exact pixel-perfect is better */
+    object-position: top center;
+}
+
+.map {
+    width: 349px;
+}
+
+.arrow {
+    /* Position the back arrow (img/arrow-left.png) */
+    position: absolute;
+    top: 54px; /* Adjust based on status bar height */
+    left: 16px;
+    width: 24px;
+    height: 24px;
+    z-index: 101; /* Above the map */
+}
+
+
+.info {
+    text-align: center;
+    padding-left: 97px;
+}
+
+.button {
+    padding-left: 38px;
+    margin-bottom: 20px;
+    width: 285px;
+}
+
+
+.select {
+    padding-left: 28px;
+    width: 320px;
+}
+
+/* 6. Home Indicator */
+.home-indicator {
+    position: absolute;
+    bottom: 8px; /* Standard distance from the bottom */
+    left: 50%;
+    transform: translateX(-50%);
+    width: 134px;
+    height: 5px;
+    background-color: black;
+    border-radius: 100px;
+    z-index: 1000;
+}
