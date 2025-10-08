@@ -6,7 +6,7 @@
 :root {
   --background-color: #f5f7fa;
   --black-color: #000000;
-  --dark-tertiary: #1e8449;
+  --dark-tertiary: #1b7842;
   --light-primary-color: #06b047;
   --icon-color: #95a5a6;
 }
@@ -42,4 +42,70 @@ body {
   cursor: pointer;
   font-size: 24px;
   color: var(--black-color);
+}
+.hero {
+  padding: 10px;
+}
+.hero-image {
+  margin-top: -10px;
+  border: none;
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+  margin-bottom: 30px;
+}
+.hero-content {
+  text-align: left;
+  margin-top: 20px;
+  line-height: 120%;
+  background: var(--dark-tertiary);
+  border: none;
+  border-radius: 20px;
+  color: white;
+  padding: 20px;
+  margin-bottom: 30px;
+}
+.hero-title {
+  font-size: 32px;
+  font-weight: bold;
+  margin-bottom: 30px;
+  margin-top: 10px;
+  text-align: center;
+}
+.hero-content p {
+  font-size: 16px;
+  margin-bottom: 30px;
+  font-size: 14px;
+}
+.hero-content span {
+  font-weight: bold;
+  transform: uppercase;
+}
+.terms-btn {
+  text-align: center;
+  margin-top: 30px;
+  margin-bottom: 20px;
+
+  background: var(--dark-tertiary);
+  border: none;
+  border-radius: 20px;
+  padding: 20px 20px;
+}
+.terms-btn:hover {
+  background: var(--light-primary-color);
+  transition: 0.3s ease-in-out;
+}
+.terms-btn a {
+  text-decoration: none;
+  color: white;
+  font-weight: bold;
+  font-size: 18px;
+}
+.terms-btn a:active {
+  color: white;
+}
+.terms-btn a:hover {
+  color: white;
+  transition: 0.3s ease-in-out;
+  font-weight: 800;
 }
