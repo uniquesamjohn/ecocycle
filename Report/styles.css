@@ -49,6 +49,10 @@ body {
   font-size: 24px;
 }
 
+.icon a {
+  color: #1f7c3f;
+}
+
 .page-name h2 {
   font-weight: 600;
   font-size: 1.25rem;
@@ -125,6 +129,9 @@ body {
 }
 
 /* REPORT ISSUES PART */
+.page-name h2 {
+  color: var(--dark-text);
+}
 
 .issues-grid {
   display: grid;
@@ -149,6 +156,12 @@ body {
 .issue-description h4 {
   margin-bottom: 0.35rem;
   font-weight: 700;
+  color: #000000;
+}
+
+.issue-description p {
+  font-size: 14px;
+  color: #555555;
 }
 
 /* REPORT FORM STYLES */
@@ -232,6 +245,7 @@ body {
 .toggle-label {
   font-size: 16px;
   font-weight: 500;
+  color: black;
 }
 
 .toggle-container {
@@ -287,6 +301,9 @@ body {
   margin-right: 0.65rem;
 }
 
+.notify-checkbox-container label {
+  color: #000;
+}
 #notify-me {
   accent-color: #388e3c;
 }

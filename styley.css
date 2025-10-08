@@ -1,0 +1,43 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    color: #333;
+    line-height: 1.6;
+  }
+
+  .frame {
+    width: 100%;
+    margin: 20px;
+    padding: 20px;
+    border-radius: 5px;
+  }
+
+  .About {
+    width: 60%;
+    margin: 5px auto;
+    padding: 15px;
+    color: white;
+    background-color: rgb(4, 94, 4);
+    border-radius: 10px;
+  }
+
+  h1 {
+    text-align: center;
+  }
+
+  button {
+    width: 55%;
+    margin: 40px 155px;
+    padding: 10px;
+    font-size: larger;
+    border-radius: 15px;
+    background-color: rgb(3, 106, 3);
+    color: white;
+    cursor: pointer;
+  }

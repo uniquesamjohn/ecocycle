@@ -136,6 +136,10 @@ input::placeholder {
     
 }
 
+.login-button a{
+    color: #e0e0e0;
+    text-decoration: none;
+}
 .login-button:hover {
     background-color: #167030;
 }
