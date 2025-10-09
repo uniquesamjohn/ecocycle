@@ -121,8 +121,19 @@ main {
     cursor: pointer;
 }
 
+.connect-button a{
+    color: #e0e0e0;
+    text-decoration: none;
+}
 .connect-button:hover {
     background-color: #167030;
+}
+.connect-button a{
+    color: white;
+    text-decoration: none;
+}
+.connect-button a:active{
+    color: white;
 }
 
 /* Responsive Adjustments */

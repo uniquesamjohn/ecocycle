@@ -118,7 +118,7 @@ document.addEventListener('DOMContentLoaded', function() {
             
             // Simulate successful social login
             setTimeout(() => {
-                window.location.href = '../success_reg/index.html';
+                window.location.href = '../HOME PAGE/index.html';
             }, 1000);
         });
     });

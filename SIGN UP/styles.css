@@ -84,6 +84,11 @@ body {
   outline: none;
   transition: border 0.2s;
 }
+
+.signup-form button a {
+  text-decoration: none;
+  color: white;
+}
 .submit-btn {
   margin-top: 10px;
   padding: 10px;
@@ -99,6 +104,13 @@ body {
 }
 .submit-btn:hover {
   background: #06b047;
+}
+.submit-btn a {
+  text-decoration: none;
+  color: white;
+}
+.submit-btn a:active {
+  color: white;
 }
 .signin-link {
   text-align: center;

@@ -9,6 +9,7 @@
   --primary-color: #1b7842;
   --dark-primary-color: #06b047;
   --secondary-color: #e9f3ed;
+   --icon-color: #95a5a6;
 }
 html {
   scroll-behavior: smooth;
@@ -105,7 +106,14 @@ li {
   cursor: pointer;
   font-size: 20px;
 }
-
+ a{
+  text-decoration: none;
+  color: var(--secondary-color);
+}
+ a:active{
+  text-decoration: none;
+  color: var(--secondary-color);
+}
 .password-link {
   display: flex;
   align-items: center;        /* ensures icons & text align vertically */
@@ -166,10 +174,16 @@ li:hover {
   transition: all 0.3s ease-in-out;
   font-size: 20px;
   font-weight: 500;
-  color: #000000;
+  color: #000000 !important;
+   background: var(--primary-color);
 }
 .logout-icon {
   margin-top: 10px;
+}
+
+.logout-con a {
+  text-decoration: none;
+  color: black;
 }
 .logout-con:hover .logout {
   background: var(--dark-primary-color);
@@ -204,19 +218,25 @@ footer {
   color: var(--black-color);
   transition: all 0.3s ease-in-out;
 }
+
+.icons a {
+  color: black;
+}
 .icons:hover,
 .icons:focus {
+  color: #06b047;
   background: var(--light-primary-color);
   font-weight: 900;
   transform: scale(1.02);
-  outline: none;
-
 }
 .icons.active .footer {
   color: #218c4a;
   opacity: 1;
 }
 
+.footer {
+  color: var(--icon-color);
+}
 .profile-link {
   text-decoration: none; /* removes underline */
   color: inherit;        /* keeps text/icon color the same */
@@ -247,3 +267,4 @@ footer {
     border-bottom-right-radius: 0;
   }
 }
+

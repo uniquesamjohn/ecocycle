@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payment - Card Details</title>
+    <link rel="stylesheet" href="styles.css">
+<script src="https://sites.super.myninja.ai/_assets/ninja-daytona-script.js"></script>
+</head>
+<body>
+    <!-- Status Bar -->
+    <div class="status-bar">
+        
+    </div>
+
+    <!-- Main Container -->
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <button class="back-button">
+                <a href="/payment-page/pickup1.html">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M15 18L9 12L15 6" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+                </a>
+            </button>
+            <h1 class="title">Payment</h1>
+        </header>
+
+        <!-- Payment Form -->
+        <form class="payment-form">
+            <!-- Name Field -->
+            <div class="form-group">
+                <label for="name" class="form-label">Name</label>
+                <input 
+                    type="text" 
+                    id="name" 
+                    class="form-input" 
+                    placeholder="Name"
+                >
+            </div>
+
+            <!-- Card Number Field -->
+            <div class="form-group">
+                <label for="cardNumber" class="form-label">Card Number</label>
+                <input 
+                    type="text" 
+                    id="cardNumber" 
+                    class="form-input" 
+                    placeholder="Card Number"
+                    aria-placeholder="1234 5678 5678"
+                    maxlength="19"
+                >
+            </div>
+
+            <!-- Expiry and CVV Row -->
+            <div class="form-row">
+                <!-- Expiry Field -->
+                <div class="form-group form-group-half">
+                    <label for="expiry" class="form-label">Expiry</label>
+                    <input 
+                        type="text" 
+                        id="expiry" 
+                        class="form-input" 
+                        placeholder="MM / YY"
+                        maxlength="7"
+                    >
+                </div>
+
+                <!-- CVV Field -->
+                <div class="form-group form-group-half">
+                    <label for="cvv" class="form-label">CVV</label>
+                    <input 
+                        type="text" 
+                        id="cvv" 
+                        class="form-input" 
+                        placeholder="123"
+                        maxlength="3"
+                    >
+                </div>
+            </div>
+
+            <!-- Pay Button -->
+            <button type="submit" class="pay-button">
+                Pay
+            </button>
+        </form>
+    </div>
+
+    
+
+    <script src="script.js"></script>
+</body>
+</html>

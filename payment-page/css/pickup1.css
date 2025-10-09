@@ -1,0 +1,229 @@
+/* Basic Reset and Setup */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    background-color: #f7f7f7; /* Light gray background matching the screen area */
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    min-height: 100vh;
+}
+
+.app-screen {
+    width: 405px; 
+    height: 815px; /* Typical iPhone X/11/12 height, assuming a common mobile ratio */
+    background-color: white; 
+    position: relative;
+    padding: 0 20px; /* Horizontal padding for content */
+    box-sizing: border-box;
+}
+
+/* Status Bar - Simulating the top bar */
+.support-card:first-child .status {
+    height: 44px; /* Typical status bar height */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 0px;
+    width: 305px;
+}
+
+.network-bar {
+    width: 100%; /* The image should fill the width */
+    height: auto;
+    object-fit: contain;
+   /* margin-bottom: 5px; */
+    padding-left: 1px;
+    margin-left: 1px;
+}
+
+.item {
+    text-align: center;
+    padding-left: 120px;
+}
+
+.sum {
+    text-align: center;
+    padding-left: 95px;
+    margin-bottom: 20px;
+}
+
+.info {
+    margin-bottom: 28px;
+}
+
+.amount {
+    margin-bottom: 40px;
+} 
+
+/* Header (Back button and 'Payment') */
+.support-card:nth-child(2) .item-info {
+    display: flex;
+    align-items: center;
+    height: 44px;
+    padding-top: 10px;
+    padding-bottom: 20px;
+}
+
+.box {
+    text-align: right;
+    padding-left: 2px;
+    margin-bottom: 9px;
+    padding-right: 11px;
+    padding-bottom: 12px;
+}
+
+.tick {
+    margin-bottom: 95px;
+}
+
+.option {
+    padding-left: 14px;
+    margin-bottom: 22px;
+}
+
+
+.pick {
+    padding-left: 10px;
+}
+
+/* Styles for all image placeholders */
+.app-screen img.text {
+    width: 100%; /* Images should fill the container width */
+    height: auto;
+    display: block;
+    object-fit: contain;
+}
+
+/* Specific adjustments for the content images based on the screenshot */
+/* These images will take the place of actual styled text */
+.support-card-item:nth-child(4) .text { /* Details info */
+    width: 70%; 
+    max-width: 200px; /* Adjusting width to mimic centered text block */
+    margin-left: 0; /* Align left */
+    align-self: flex-start;
+}
+
+.support-card-item:nth-child(6) .text { /* Amount */
+    width: 50%;
+    max-width: 100px;
+}
+
+
+
+.support-card-item:nth-child(9) .text {
+    width: 100%;
+}
+
+
+
+.support-card-item:nth-child(10) .item-info {
+    padding: 0;
+}
+
+.support-card-item:nth-child(10) .text {
+    width: 100%;
+}
+
+/* Home Indicator */
+.home-indicator {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 34px; /* Typical home indicator height */
+}
+
+/* General Link/Div Styles */
+a.support-card, a.support-card-item {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+    /* Resetting default image containers */
+    padding: 0;
+    margin: 0;
+    width: 100%;
+}
+
+.item-info {
+    padding: 0;
+    margin: 0;
+}
+
+footer {
+  margin-bottom: 0;
+  background: #e9f3ed;
+  border-radius: 15px;
+}
+.nav-icons {
+  display: flex;
+  color: #218c4a;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0 auto;
+  flex-wrap: wrap;
+  width: 100%;
+  max-width: 400px;
+  padding: 5px 0;
+  cursor: pointer;
+  margin-bottom: 5px;
+}
+.icons {
+  font-size: 24px;
+  padding: 5px;
+  border-radius: 50%;
+  color: var(--black-color);
+  transition: all 0.3s ease-in-out;
+}
+
+.icons a {
+    color: #218c4a;
+}
+.icons:hover,
+.icons:focus {
+  background: var(--light-primary-color);
+  font-weight: 900;
+  transform: scale(1.02);
+}
+.icons.active .footer {
+  color: #218c4a;
+  opacity: 1;
+}
+
+.footer {
+  color: var(--icon-color);
+}
+
+@media (max-width: 400px) {
+    .status-bar-img {
+     width: 300px;
+     margin: 0 auto;
+     margin-left: -20px;
+    }
+    .edit-profile-btn {
+     padding: 6px;
+     font-size: 15px;
+     bottom: 4px;
+     right: 20px;
+    }
+    .body-container {
+     margin-top: 0px;
+     margin-bottom: 0;
+     border-bottom-left-radius: 0;
+     border-bottom-right-radius: 0;
+     }
+    .pickup-img {
+     width: 70%;
+     margin-left: 20px;
+    }
+    .pickup-bg {
+     object-fit: contain;
+     width: 300px;
+     justify-content: center;
+     margin: 0 auto;
+     margin-left: 40px;
+     padding: 0;
+    }
+}

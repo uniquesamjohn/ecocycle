@@ -5,19 +5,19 @@ document.addEventListener('DOMContentLoaded', function() {
     if (backButton) {
         backButton.addEventListener('click', function() {
             // Go back to the sign-in page
-            window.location.href = '../sign-in/index.html';
+            window.location.href = '/sign-in/index.html';
         });
     }
     
     // Connect button functionality
-    const connectButton = document.querySelector('.connect-button');
-    if (connectButton) {
-        connectButton.addEventListener('click', function() {
+    // const connectButton = document.querySelector('.connect-button');
+    // if (connectButton) {
+    //     connectButton.addEventListener('click', function() {
             // In a real app, this would navigate to the driver connection page
-            console.log('Connect with driver clicked');
-            alert('This would navigate to the driver connection page in a real application.');
-        });
-    }
+    //         console.log('Connect with driver clicked');
+    //         alert('This would navigate to the driver connection page in a real application.');
+    //     });
+    // }
     
     // Animation for success icon
     const successIcon = document.querySelector('.success-icon');
