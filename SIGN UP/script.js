@@ -3,10 +3,10 @@ const animationslides = {
   distance: "50px",
   duration: "1000",
 };
-
-ScrollReveal().reveal(".eco-logo", {
+eco-logo
+ScrollReveal().reveal(".body-container", {
   ...animationslides,
-  origin: "top",
+  origin: "right",
 });
 ScrollReveal().reveal(".body-container", {
   ...animationslides,
