@@ -1,5 +1,4 @@
 document.addEventListener('DOMContentLoaded', function() {
-    // Direct backend caller (no helpers, no dev console, no logger)
     const API_BASE = window.ECO_API_BASE || 'https://ecocycle-techyjaunt.onrender.com/api';
 
     async function callBackend(path, opts = {}){
