@@ -1,6 +1,5 @@
-// Wait for the DOM to be fully loaded
 document.addEventListener('DOMContentLoaded', function() {
-    // Direct backend caller (no helpers, no dev console, no logger)
+
     const API_BASE = window.ECO_API_BASE || 'https://ecocycle-techyjaunt.onrender.com/api';
 
     async function callBackend(path, opts = {}){
@@ -32,7 +31,6 @@ document.addEventListener('DOMContentLoaded', function() {
         loginForm.addEventListener('submit', async function(event) {
             // Prevent the default form submission
             event.preventDefault();
-            await loadApiHelper();
 
             // Get form values
             const email = document.getElementById('email').value.trim();
@@ -52,7 +50,6 @@ document.addEventListener('DOMContentLoaded', function() {
             }
 
             try {
-                // inline error if sign-in fails
                 let errEl = document.getElementById('login-error');
                 if (!errEl) {
                     errEl = document.createElement('div');
@@ -60,33 +57,28 @@ document.addEventListener('DOMContentLoaded', function() {
                     errEl.style.cssText = 'color: #fff; background: #e74c3c; padding: 8px 12px; border-radius:6px; margin:8px 0; display:none;';
                     loginForm.parentNode.insertBefore(errEl, loginForm);
                 }
-
-                // clear any previous error
                 errEl.style.display = 'none';
-
                 showLoading();
                 const payload = await callBackend('/auth/signin', {
                     method: 'POST',
                     body: { email, password }
                 });
-
-                // Save token and user
                 if (payload && payload.token) {
                     localStorage.setItem('ecocycle_token', payload.token);
                 }
                 if (payload && payload.user) {
                     localStorage.setItem('ecocycle_user', JSON.stringify(payload.user));
                 }
-
                 showMessage('Login successful');
-                // redirect to home page or appropriate dashboard
                 setTimeout(() => {
                     window.location.href = '../HOME_PAGE/index.html';
                 }, 800);
             } catch (err) {
                 console.error('Signin error', err);
-                const msg = (err && err.payload && err.payload.message) || err.message || 'Login failed';
-                // show inline and toast
+                let msg = (err && err.payload && err.payload.message) || err.message || 'Login failed';
+                if (msg && typeof msg === 'string' && msg.toLowerCase().includes('verify your email')) {
+                    msg = 'Login failed. Please check your credentials.';
+                }
                 const errEl = document.getElementById('login-error');
                 if (errEl) {
                     errEl.textContent = msg;

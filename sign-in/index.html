@@ -5,12 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ECOCYCLE - Sign In</title>
     <link rel="stylesheet" href="styles.css">
-<script src="https://sites.super.myninja.ai/_assets/ninja-daytona-script.js"></script>
 </head>
 <body>
     <div class="container">
-
-        <!-- Header -->
         <header>
             <button class="back-button">
                 <img src="assets/arrow-left.png" alt="Back">
@@ -19,54 +16,40 @@
                 <img src="assets/logo.png" alt="ECOCYCLE">
             </div>
         </header>
-
-        <!-- Main Content -->
         <main>
             <h1 class="welcome-text">Welcome Back</h1>
-            
             <form id="loginForm">
                 <div class="form-group">
                     <label for="email">Email</label>
                     <input type="email" id="email" placeholder="Your email" required autofocus>
                 </div>
-                
                 <div class="form-group">
                     <label for="password">Password</label>
                     <input type="password" id="password" placeholder="Your password" required>
                 </div>
-                
                 <div class="forgot-password">
                     <a href="../forgot_password/index.html">Forgot Password</a>
                 </div>
-                
                 <button type="submit" class="login-button">LOGIN</button>
             </form>
-            
             <div class="signup-prompt">
                 <p>Don't Have an account?<a href="../SIGN UP/index.html" class="signup-link">Sign Up</a></p>
             </div>
-            
             <div class="social-login">
                 <div class="divider">
                     <span>Sign in with</span>
                 </div>
-                
                 <div class="social-buttons">
                     <button class="social-button apple">
-                        <svg viewBox="0 0 24 24" width="24" height="24">
-                            <path d="M17.05 20.28c-.98.95-2.05.86-3.08.38-1.09-.5-2.08-.48-3.24 0-1.44.62-2.2.44-3.06-.38C2.79 15.25 3.51 7.59 9.05 7.31c1.35.07 2.29.74 3.08.74 1.2 0 1.94-.74 3.28-.74 1.04.05 3.84.58 5.46 3.64-4.09 2.62-3.4 7.78.18 9.33zm-4.2-17.4c-2.57.13-4.63 2.24-4.44 4.67 2.5.2 4.53-2 4.44-4.67z"/>
-                        </svg>
+                        <!-- Apple SVG icon -->
                     </button>
                     <button class="social-button google">
-                        <svg viewBox="0 0 24 24" width="24" height="24">
-                            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm5.01 14.35c-.62 1.96-2.28 3.37-4.4 3.65-2.12.28-4.18-.71-5.3-2.45-1.12-1.74-1.17-4.05-.14-5.84 1.05-1.83 3.06-2.92 5.19-2.85 1.07.04 2.09.37 2.99.96l-1.21 1.16c-.51-.36-1.11-.6-1.75-.61-1.25-.03-2.44.58-3.13 1.61-.69 1.03-.77 2.35-.21 3.46.56 1.1 1.66 1.8 2.89 1.82 1.23.02 2.37-.63 2.98-1.69.36-.64.49-1.39.4-2.13h-3.37v-1.64h4.97c.06.36.09.71.09 1.07-.01 1.55-.49 2.91-1.31 3.98z"/>
-                        </svg>
+                        <!-- Google SVG icon -->
                     </button>
                 </div>
             </div>
         </main>
     </div>
-
     <script src="../shared/common.js"></script>
     <script src="../shared/init-api.js"></script>
     <script src="script.js"></script>
