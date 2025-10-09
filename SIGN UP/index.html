@@ -57,6 +57,15 @@
               title="Password must be at least 8 characters and include letters, numbers, and special characters."
             />
           </label>
+          <!-- Role selection -->
+          <label for="role">
+            Role
+            <select id="role" name="role" required>
+              <option value="household" selected>Household</option>
+              <option value="driver">Driver</option>
+              <option value="admin">Admin</option>
+            </select>
+          </label>
           <label for="address"
             >Address
             <input id="address" type="text" placeholder="Your address" required />
@@ -65,14 +74,21 @@
             >Phone Number
             <input id="phone" type="tel" placeholder="Your number" required />
           </label>
-          <button type="submit" class="submit-btn"><a href="../success_reg/index.html">REGISTER</a></button>
+          <!-- Driver-specific field (hidden by default) -->
+          <label for="licenseNumber" id="license-field" style="display:none;">
+            License Number
+            <input id="licenseNumber" type="text" placeholder="Driver license number" />
+          </label>
+          <button type="submit" class="submit-btn">REGISTER</button>
         </form>
         <!-- Sign-in link  -->
-        <div class="signin-link">Have an account? <a href="../sign-in/index.html">Sign in</a></div>
+        <div class="signin-link">Have an account? <a href="/sign-in/index.html">Sign in</a></div>
       </div>
     </div>
 
     <script src="https://unpkg.com/scrollreveal"></script>
+    <script src="../shared/common.js"></script>
+    <script src="../shared/init-api.js"></script>
     <script src="script.js"></script>
   </body>
 </html>

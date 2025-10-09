@@ -5,7 +5,7 @@ document.addEventListener('DOMContentLoaded', function() {
     if (backButton) {
         backButton.addEventListener('click', function() {
             // Go back to the sign-in page
-            window.location.href = '../sign-in/index.html';
+            window.location.href = '/sign-in/index.html';
         });
     }
     
