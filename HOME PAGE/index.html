@@ -150,41 +150,41 @@
       </footer>
     </div>
     <script src="../shared/init-api.js"></script>
-    <script>
-      // Render greeting using the first name from localStorage (fallback to /auth/me)
-      (async function(){
-        function setGreeting(name){
-          const el = document.querySelector('.greeting');
-          if (!el) return;
-          const first = (name || '').split(' ')[0] || '';
-          el.textContent = first ? `Hi, ${first}` : 'Hi';
+      <script>
+    // Render greeting using the first name from /auth/me (fallback to localStorage)
+    (async function () {
+      function setGreeting(name) {
+        const el = document.querySelector('.greeting');
+        if (!el) return;
+        const first = (name || '').split(' ')[0] || '';
+        el.textContent = first ? `Hi, ${first}` : 'Hi';
+      }
+
+      // Try /auth/me first
+      try {
+        const API_BASE = window.ECO_API_BASE || 'https://ecocycle-techyjaunt.onrender.com/api';
+        const token = localStorage.getItem('ecocycle_token');
+        const headers = { 'Content-Type': 'application/json' };
+        if (token) headers['Authorization'] = 'Bearer ' + token;
+        const res = await fetch(API_BASE + '/auth/me', { headers });
+        if (res.ok) {
+          const json = await res.json();
+          const user = json.user || json;
+          setGreeting(user && (user.name || user.firstName));
+          return;
         }
+      } catch (e) { /* ignore */ }
 
-        // Try localStorage first
-        try{
-          const stored = localStorage.getItem('ecocycle_user');
-          if (stored){
-            const user = JSON.parse(stored);
-            setGreeting(user.name || user.firstName || '');
-            return;
-          }
-        }catch(e){/* ignore */}
-
-        // Fallback: call /auth/me
-        try{
-          const API_BASE = window.ECO_API_BASE || 'https://ecocycle-techyjaunt.onrender.com/api';
-          const token = localStorage.getItem('ecocycle_token');
-          const headers = { 'Content-Type': 'application/json' };
-          if (token) headers['Authorization'] = 'Bearer ' + token;
-          const res = await fetch(API_BASE + '/auth/me', { headers });
-          if (res.ok){
-            const json = await res.json();
-            const user = json.user || json;
-            setGreeting(user && (user.name || user.firstName));
-          }
-        }catch(e){/* ignore */}
-      })();
-    </script>
+      // Fallback: Try localStorage
+      try {
+        const stored = localStorage.getItem('ecocycle_user');
+        if (stored) {
+          const user = JSON.parse(stored);
+          setGreeting(user.name || user.firstName || '');
+        }
+      } catch (e) { /* ignore */ }
+    })();
+  </script>
     <script src="script.js"></script>
     <!-- Auth guard: redirects to sign-in if not authenticated -->
     <script src="../shared/auth-guard.js"></script>
