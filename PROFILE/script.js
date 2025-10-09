@@ -30,7 +30,10 @@ document.addEventListener('DOMContentLoaded', async function(){
         const user = res.user;
         // Populate profile fields
         const nameEl = document.querySelector('.profile-name');
-        if (nameEl) nameEl.textContent = user.name || '';
+        if (nameEl) {
+            const first = (user.name || '').split(' ')[0] || user.firstName || '';
+            nameEl.textContent = first;
+        }
         const emailEls = document.querySelectorAll('.profile-value.email');
         emailEls.forEach(el => el.textContent = user.email || '');
         const telEls = document.querySelectorAll('.profile-value.tel');
