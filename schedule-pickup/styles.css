@@ -360,6 +360,7 @@ footer {
   margin-bottom: 0;
   background: #e9f3ed;
   border-radius: 15px;
+  border-top-left-radius: transparent;
 }
 .nav-icons {
   display: flex;
@@ -378,17 +379,12 @@ footer {
   font-size: 24px;
   padding: 5px;
   border-radius: 50%;
-  color: var(--black-color);
+  color: black;
   transition: all 0.3s ease-in-out;
-}
-
-icons a {
-    text-decoration: none;
-    color: black;
 }
 .icons:hover,
 .icons:focus {
-  background: var(--light-primary-color);
+  background:#06b047;
   font-weight: 900;
   transform: scale(1.02);
 }
@@ -398,7 +394,7 @@ icons a {
 }
 
 .footer {
-  color: var(--icon-color);
+  color: #95a5a6;
 }
 
 @media (max-width: 400px) {

@@ -105,6 +105,9 @@ input {
     color: #333;
 }
 
+/* Ensure inputs are above any overlays and clickable */
+.container, main, form, input, button { position: relative; z-index: 2; }
+
 input::placeholder {
     color: #aaa;
 }
@@ -134,6 +137,15 @@ input::placeholder {
     text-transform: uppercase;
     margin-bottom: 25px;
 }
+.login-button a{
+    text-decoration: none;
+    color: white;
+
+}
+.login-button a:active{
+    color: white;
+    
+}
 
 .login-button a{
     color: #e0e0e0;
@@ -153,6 +165,7 @@ input::placeholder {
     font-size: 14px;
     color: #333;
 }
+
 
 .signup-link {
     color: #1e8a3e;

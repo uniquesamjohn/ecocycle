@@ -45,49 +45,91 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Form submission
     if (resetPasswordForm) {
-        resetPasswordForm.addEventListener('submit', function(event) {
+        resetPasswordForm.addEventListener('submit', async function(event) {
             event.preventDefault();
-            
+
+            // Direct backend caller
+            const API_BASE = window.ECO_API_BASE || 'https://ecocycle-techyjaunt.onrender.com/api';
+
+            async function callBackend(path, opts = {}){
+                const url = path.startsWith('http') ? path : (API_BASE + path);
+                const method = (opts.method || 'GET').toUpperCase();
+                const headers = Object.assign({ 'Content-Type': 'application/json' }, opts.headers || {});
+                const token = localStorage.getItem('ecocycle_token');
+                if (token) headers['Authorization'] = 'Bearer ' + token;
+                const fetchOpts = { method, headers };
+                if (opts.body && method !== 'GET' && method !== 'HEAD') fetchOpts.body = JSON.stringify(opts.body);
+
+                const res = await fetch(url, fetchOpts);
+                const text = await res.text();
+                let json;
+                try { json = text ? JSON.parse(text) : {}; } catch (err) { json = text; }
+                if (!res.ok) {
+                    const err = new Error((json && json.message) || res.statusText || 'Request failed');
+                    err.payload = json;
+                    throw err;
+                }
+                return json;
+            }
+
             const newPassword = newPasswordInput.value;
             const confirmPassword = confirmPasswordInput.value;
-            
+
             // Validation
             if (!newPassword || !confirmPassword) {
-                alert('Please fill in all fields');
+                showMessage('Please fill in all fields');
                 return;
             }
-            
-            if (newPassword.length < 8) {
-                alert('Password must be at least 8 characters long');
+
+            if (newPassword.length < 6) {
+                showMessage('Password must be at least 6 characters long');
                 return;
             }
-            
+
             if (newPassword !== confirmPassword) {
-                alert('Passwords do not match');
+                showMessage('Passwords do not match');
                 return;
             }
-            
+
             // Check password strength
             const strength = checkPasswordStrength(newPassword);
             if (strength < 3) {
                 const proceed = confirm('Your password is weak. Do you want to continue?');
                 if (!proceed) return;
             }
-            
-            // Store password (in real app, this would be sent to server)
-            console.log('Password reset successful');
-            
-            // Clear sessionStorage
-            sessionStorage.removeItem('resetEmail');
-            sessionStorage.removeItem('verificationCode');
-            
-            // Show success message
-            alert('Password has been reset successfully!');
-            
-            // Redirect to successful reset page
-            setTimeout(() => {
-                window.location.href = '../successful_reset/index.html';
-            }, 1000);
+
+            const email = sessionStorage.getItem('resetEmail');
+            const otp = sessionStorage.getItem('verificationCode');
+
+            if (!email || !otp) {
+                showMessage('Missing reset context. Please re-run forgot password flow');
+                setTimeout(()=> window.location.href = '../forgot_password/index.html', 800);
+                return;
+            }
+
+            try {
+                showLoading();
+                // Backend expects a userId param; provide a placeholder 'reset' so controller can run
+                const res = await callBackend('/auth/reset-password/reset', {
+                    method: 'POST',
+                    body: { email, newPassword, confirmPassword }
+                });
+
+                // Clear sessionStorage
+                sessionStorage.removeItem('resetEmail');
+                sessionStorage.removeItem('verificationCode');
+
+                showMessage('Password reset successfully');
+                setTimeout(() => {
+                    window.location.href = '../successful_reset/index.html';
+                }, 900);
+            } catch (err) {
+                console.error('resetPassword error', err);
+                const msg = (err && err.payload && err.payload.message) || err.message || 'Reset failed';
+                showMessage(msg);
+            } finally {
+                hideLoading();
+            }
         });
     }
     

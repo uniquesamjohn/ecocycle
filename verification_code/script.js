@@ -1,5 +1,28 @@
 // Wait for the DOM to be fully loaded
 document.addEventListener('DOMContentLoaded', function() {
+    // Direct backend caller
+    const API_BASE = window.ECO_API_BASE || 'https://ecocycle-techyjaunt.onrender.com/api';
+
+    async function callBackend(path, opts = {}){
+        const url = path.startsWith('http') ? path : (API_BASE + path);
+        const method = (opts.method || 'GET').toUpperCase();
+        const headers = Object.assign({ 'Content-Type': 'application/json' }, opts.headers || {});
+        const token = localStorage.getItem('ecocycle_token');
+        if (token) headers['Authorization'] = 'Bearer ' + token;
+        const fetchOpts = { method, headers };
+        if (opts.body && method !== 'GET' && method !== 'HEAD') fetchOpts.body = JSON.stringify(opts.body);
+
+        const res = await fetch(url, fetchOpts);
+        const text = await res.text();
+        let json;
+        try { json = text ? JSON.parse(text) : {}; } catch (err) { json = text; }
+        if (!res.ok) {
+            const err = new Error((json && json.message) || res.statusText || 'Request failed');
+            err.payload = json;
+            throw err;
+        }
+        return json;
+    }
     const otpInputs = document.querySelectorAll('.otp-input');
     const verificationForm = document.getElementById('verificationForm');
     const resendButton = document.querySelector('.resend-button');
@@ -63,30 +86,45 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Form submission
     if (verificationForm) {
-        verificationForm.addEventListener('submit', function(event) {
+        verificationForm.addEventListener('submit', async function(event) {
             event.preventDefault();
-            
+
+
             // Get OTP value
             const otp = Array.from(otpInputs).map(input => input.value).join('');
-            
-            if (otp.length !== 4) {
-                alert('Please enter the complete verification code');
+
+            if (otp.length !== 6 && otp.length !== 4) {
+                showMessage('Please enter the complete verification code');
                 return;
             }
-            
-            // Store OTP in sessionStorage
-            sessionStorage.setItem('verificationCode', otp);
-            
-            console.log('Verifying OTP:', otp);
-            
-            // Simulate OTP verification
-            // In a real app, this would verify with the server
-            alert('Code verified successfully!');
-            
-            // Redirect to reset password page
-            setTimeout(() => {
-                window.location.href = '../reset_password/index.html';
-            }, 1000);
+
+            const email = sessionStorage.getItem('resetEmail');
+            if (!email) {
+                showMessage('Missing email address. Please re-enter your email');
+                setTimeout(()=> window.location.href = '../forgot_password/index.html', 800);
+                return;
+            }
+
+            try {
+                showLoading();
+                await callBackend('/auth/verify-otp', {
+                    method: 'POST',
+                    body: { email, otp }
+                });
+
+                // Store OTP in sessionStorage to allow reset page to proceed
+                sessionStorage.setItem('verificationCode', otp);
+                showMessage('OTP verified. Proceed to reset password');
+                setTimeout(() => {
+                    window.location.href = '../reset_password/index.html';
+                }, 900);
+            } catch (err) {
+                console.error('verifyOtp error', err);
+                const msg = (err && err.payload && err.payload.message) || err.message || 'OTP verification failed';
+                showMessage(msg);
+            } finally {
+                hideLoading();
+            }
         });
     }
     

@@ -1,3 +1,23 @@
+Ecocycle Frontend — local testing notes
+
+How to connect the frontend to the backend during development:
+
+- Start the backend server (from GROUP E/ECOCYCLE-signin-auth):
+  - Install deps: npm install
+  - Create a .env with MONGO_URI and JWT_SECRET
+  - Run: npm run dev (or node server.js). The backend listens on port 4000 by default in this project.
+
+- By default the frontend's API helper will target port 4000 on the same host. To override the API base when testing from the filesystem or a different host, set a global variable before loading scripts. Example (in the browser console or a small inline script in index.html):
+  <script>
+    // point frontend to local backend on port 4000
+    window.ECO_API_BASE = 'http://localhost:4000/api';
+  </script>
+
+- Open the frontend pages in your browser (e.g., ecocycle/sign-in/index.html) and try Sign Up / Sign In.
+
+Notes:
+- After successful signin/signup the JWT is stored in localStorage under the key `ecocycle_token` and the user under `ecocycle_user`.
+- The frontend uses a small fetch wrapper at `shared/api.js` which attaches the Authorization header when a token is present.
 # EcoCycle - Redefining Nigeria's Waste Management Experience
 
 EcoCycle is a digital platform designed to address the waste management challenges faced by households in Nigeria. It bridges the gap between households and waste pickup providers by providing a mobile/web solution that allows users to request pickups on-demand or via schedule, while enabling waste management companies to optimize routes and track service delivery.

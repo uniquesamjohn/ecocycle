@@ -9,6 +9,8 @@
   --primary-color: #1b7842;
   --dark-primary-color: #06b047;
   --secondary-color: #e9f3ed;
+   --icon-color: #95a5a6;
+    --light-primary-color: #06b047;
 }
 html {
   scroll-behavior: smooth;
@@ -27,7 +29,7 @@ body {
 .body-container {
   margin: 0 auto;
   max-width: 400px;
-  padding: 24px 16px 20px 16px;
+  padding: 24px 16px 5px 16px;
   min-height: 100vh;
   background: var(--background-color);
   box-shadow: 0 0 30px rgba(0, 0, 0, 0.1);
@@ -105,7 +107,14 @@ li {
   cursor: pointer;
   font-size: 20px;
 }
-
+ a{
+  text-decoration: none;
+  color: var(--secondary-color);
+}
+ a:active{
+  text-decoration: none;
+  color: var(--secondary-color);
+}
 .password-link {
   display: flex;
   align-items: center;        /* ensures icons & text align vertically */
@@ -150,6 +159,8 @@ li:hover {
 .logout-con {
   margin-bottom: 30px;
   margin-top: 40px;
+  align-items: center;
+  display: flex;
 }
 .logout {
   margin: 20px 0 0 0;
@@ -166,10 +177,14 @@ li:hover {
   transition: all 0.3s ease-in-out;
   font-size: 20px;
   font-weight: 500;
-  color: #000000;
+  color: #000000 !important;
+}
+.logout span{
+  align-items: center;
 }
 .logout-icon {
   margin-top: 10px;
+  
 }
 
 .logout-con a {
@@ -184,6 +199,7 @@ li:hover {
   transform: scale(1.02);
 }
 footer {
+  margin-top: 70px;
   margin-bottom: 0;
   background: #e9f3ed;
   border-radius: 15px;
@@ -209,24 +225,20 @@ footer {
   color: var(--black-color);
   transition: all 0.3s ease-in-out;
 }
-
-.icons a {
-  color: black;
-}
 .icons:hover,
 .icons:focus {
-  color: #06b047;
   background: var(--light-primary-color);
   font-weight: 900;
   transform: scale(1.02);
-  outline: none;
-
 }
 .icons.active .footer {
   color: #218c4a;
   opacity: 1;
 }
 
+.footer {
+  color: var(--icon-color);
+}
 .profile-link {
   text-decoration: none; /* removes underline */
   color: inherit;        /* keeps text/icon color the same */

@@ -81,6 +81,14 @@ body {
 .back-btn:hover {
   color: white;
   font-weight: 900;
+}.back-btn a{
+    text-decoration: none;
+    color: black;
+
+}
+.back-btn a:active{
+    color: black;
+    
 }
 li {
   display: flex;
