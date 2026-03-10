@@ -32,6 +32,8 @@ body {
   box-shadow: 0 0 30px rgba(0, 0, 0, 0.1);
   margin-bottom: 20px;
   margin-top: 20px;
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
   border-bottom-left-radius: 20px;
   border-bottom-right-radius: 20px;
   position: relative;
